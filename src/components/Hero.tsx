@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Particles } from "./Particles";
-import c7 from "@/assets/couple-7.png";
+
 
 export function Hero() {
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-contain bg-center bg-no-repeat md:bg-cover px-6 py-20"
-      style={{ backgroundImage: `url(${c7})` }}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-6 py-20"
+      
     >
       <div className="absolute inset-0 bg-black/65" />
       <Particles count={50} />
