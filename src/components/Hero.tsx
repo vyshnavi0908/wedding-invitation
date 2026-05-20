@@ -5,7 +5,7 @@ import { Particles } from "./Particles";
 export function Hero() {
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-6 py-20"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6 py-20"
       
     >
       <div className="absolute inset-0 bg-black/65" />
