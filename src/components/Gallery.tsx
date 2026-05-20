@@ -7,6 +7,7 @@ import c5 from "@/assets/couple-5.png";
 import c6 from "@/assets/couple-6.png";
 import c7 from "@/assets/couple-7.png";
 import c8 from "@/assets/couple-8.png";
+import { useState } from "react";
 
 const items = [
   { src: c5, span: "md:col-span-2 md:row-span-2", ratio: "aspect-[4/3]" },
@@ -18,6 +19,7 @@ const items = [
 ];
 
 export function Gallery() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   return (
     <section className="relative px-6 py-16">
       <SectionTitle
@@ -26,9 +28,10 @@ export function Gallery() {
         subtitle="A glimpse into the love that brought us here."
       />
 
-      <div className="mx-auto mt-16 grid max-w-6xl auto-rows-[180px] grid-cols-2 gap-4 sm:auto-rows-[220px] md:grid-cols-4 md:gap-6">
+      <div className="mx-auto mt-10 grid max-w-6xl auto-rows-[140px] grid-cols-2 gap-3 sm:auto-rows-[220px] md:grid-cols-4 md:gap-6">
         {items.map((it, i) => (
           <motion.div
+  onClick={() => setSelectedImage(it.src)}
             key={i}
             initial={{ opacity: 0, scale: 0.92, y: 30 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -45,6 +48,18 @@ export function Gallery() {
           </motion.div>
         ))}
       </div>
+      {selectedImage && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+    onClick={() => setSelectedImage(null)}
+  >
+    <img
+      src={selectedImage}
+      alt=""
+      className="max-h-[90vh] max-w-full rounded-2xl object-contain"
+    />
+  </div>
+)}
     </section>
   );
 }

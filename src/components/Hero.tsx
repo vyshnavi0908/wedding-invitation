@@ -46,7 +46,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 0.9 }}
-          className="mt-8 font-serif text-5xl font-light leading-[1.05] sm:text-7xl md:text-8xl"
+          className="mt-8 font-serif text-4xl font-light leading-[1.1] sm:text-6xl md:text-8xl"
         >
           <span className="gold-shimmer block">Vijay</span>
           <span className="my-2 block font-script text-4xl text-gold-soft sm:text-5xl">&</span>

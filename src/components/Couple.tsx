@@ -29,7 +29,7 @@ export function Couple() {
         subtitle="From shared smiles to endless memories, their journey blossomed into a love story meant to last forever."
       />
 
-      <div className="relative z-10 mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-10 md:grid-cols-2">
+      <div className="relative z-10 mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
         {people.map((p, i) => (
           <motion.div
             key={p.name}
