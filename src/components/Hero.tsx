@@ -5,32 +5,9 @@ import { Particles } from "./Particles";
 export function Hero() {
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6 py-20"
+      className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-6 py-20"
       
     >
-      
-      <Particles count={50} />
-
-      {/* Slow rotating geometric ornament */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-slow-spin opacity-20">
-        <svg width="600" height="600" viewBox="0 0 600 600" fill="none">
-          <circle cx="300" cy="300" r="280" stroke="oklch(0.82 0.14 85)" strokeWidth="0.5" />
-          <circle cx="300" cy="300" r="220" stroke="oklch(0.82 0.14 85)" strokeWidth="0.5" />
-          <circle cx="300" cy="300" r="160" stroke="oklch(0.82 0.14 85)" strokeWidth="0.5" strokeDasharray="2 6" />
-          {Array.from({ length: 12 }).map((_, i) => (
-            <line
-              key={i}
-              x1="300"
-              y1="20"
-              x2="300"
-              y2="80"
-              stroke="oklch(0.82 0.14 85)"
-              strokeWidth="0.6"
-              transform={`rotate(${i * 30} 300 300)`}
-            />
-          ))}
-        </svg>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <motion.div
