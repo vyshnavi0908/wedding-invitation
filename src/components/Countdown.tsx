@@ -37,7 +37,7 @@ export function Countdown() {
         subtitle="June 26, 2026 · Umaid Bhawan Palace, Jodhpur"
       />
 
-      <div className="mx-auto mt-16 grid max-w-5xl grid-cols-4 gap-2 sm:gap-6">
+      <div className="mx-auto mt-16 grid max-w-md grid-cols-4 gap-2 sm:max-w-5xl sm:gap-6">
         {items.map(([label, val], i) => (
           <motion.div
             key={label}
@@ -45,7 +45,7 @@ export function Countdown() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: i * 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="glass-card flex flex-col items-center justify-center rounded-[1.5rem] p-3 sm:p-8 text-center"
+            className="glass-card flex flex-col items-center justify-center rounded-2xl p-2 sm:p-8 text-center"
           >
             <div className="relative overflow-hidden">
               <AnimatePresence mode="popLayout">
@@ -55,13 +55,13 @@ export function Countdown() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="gold-shimmer block font-serif text-3xl font-light leading-none text-foreground sm:text-[5rem] md:text-[6.5rem]"
+                  className="gold-shimmer block font-serif text-2xl font-light leading-none text-foreground sm:text-[5rem] md:text-[6.5rem]"
                 >
                   {String(val).padStart(2, "0")}
                 </motion.span>
               </AnimatePresence>
             </div>
-            <span className="mt-4 font-sans text-sm uppercase tracking-[0.35em] text-gold/80 sm:text-base">
+            <span className="mt-2 font-sans text-[10px] uppercase tracking-[0.18em] text-gold/80 sm:mt-4 sm:text-base sm:tracking-[0.35em]">
               {label}
             </span>
           </motion.div>
