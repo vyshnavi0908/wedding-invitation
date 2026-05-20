@@ -8,7 +8,7 @@ export function Hero() {
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6 py-20"
       
     >
-      <div className="absolute inset-0 bg-black/65" />
+      
       <Particles count={50} />
 
       {/* Slow rotating geometric ornament */}
