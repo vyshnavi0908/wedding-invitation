@@ -1,104 +1,160 @@
 import { motion } from "framer-motion";
-import { Particles } from "./Particles";
 
+const characterVariants = {
+  hidden: { opacity: 0, y: 25, filter: "blur(5px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { type: "spring", damping: 14, stiffness: 80 }
+  }
+};
+
+function RevealText({ text, delay = 0 }: { text: string; delay?: number }) {
+  const letters = Array.from(text);
+  
+  return (
+    <motion.span
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: 0.1,
+            delayChildren: delay,
+          }
+        }
+      }}
+      className="inline-flex flex-wrap justify-center"
+    >
+      {letters.map((char, index) => (
+        <motion.span
+          key={index}
+          variants={characterVariants}
+          className="inline-block gold-shimmer font-cinzel transition-all duration-500 hover:scale-108 hover:text-gold-soft cursor-default"
+          style={{ textShadow: "0 4px 20px oklch(0.82 0.14 85 / 0.15)" }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
 
 export function Hero() {
   return (
-    <section id="home"
-      className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-6 py-20"
-      
+    <section 
+      id="home"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-20"
     >
+      {/* Decorative Gold Filigree Corner Frames for the landing section */}
+      <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-royal/25 rounded-tl-3xl pointer-events-none" />
+      <div className="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-royal/25 rounded-tr-3xl pointer-events-none" />
+      <div className="absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-royal/25 rounded-bl-3xl pointer-events-none" />
+      <div className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-royal/25 rounded-br-3xl pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-3xl text-center">
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
+        {/* Holy symbol & blessing with drawing line */}
         <motion.div
-  initial={{ opacity: 0, scale: 0.8 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 1.4, delay: 0.3 }}
-  className="mb-8 flex flex-col items-center"
->
-  <span className="font-serif text-5xl text-gold sm:text-6xl">
-    ॐ
-  </span>
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.2 }}
+          className="mb-8 flex flex-col items-center"
+        >
+          <span className="font-serif text-5xl text-royal sm:text-6xl animate-golden-glint">
+            ॐ
+          </span>
 
-  <p className="mt-2 font-serif text-xs italic tracking-[0.2em] text-gold/70 sm:text-base">
-    ॥ Om Gam Ganapataye Namah ॥
-  </p>
+          <p className="mt-3 font-serif text-xs italic tracking-[0.25em] text-royal/80 sm:text-sm">
+            ॥ Om Gam Ganapataye Namah ॥
+          </p>
 
-  <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent" />
-</motion.div>
+          <div className="mt-4 h-px w-28 bg-gradient-to-r from-transparent via-royal/40 to-transparent" />
+        </motion.div>
 
+        {/* Eyebrow texts with letters revealing */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
-          className="font-sans text-[10px] uppercase tracking-[0.5em] text-gold/80"
+          className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.55em] text-royal/80 font-medium"
         >
           A Week of Wedding Celebrations
         </motion.p>
+        
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.8 }}
-          className="font-sans text-xs uppercase tracking-[0.5em] text-gold/80"
+          className="mt-2 font-sans text-xs uppercase tracking-[0.45em] text-royal/70 font-semibold"
         >
           Save the Date · 26 . 06 . 2026
         </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.9 }}
-          className="mt-8 font-serif text-4xl font-light leading-[1.1] sm:text-6xl md:text-8xl"
-        >
-          <span className="gold-shimmer block">Vijay</span>
-          <span className="my-2 block font-script text-4xl text-gold-soft sm:text-5xl">&</span>
-          <span className="gold-shimmer block">Rashmika</span>
-        </motion.h1>
+        {/* Cinematic Typing & Reveal Couple Names */}
+        <h1 className="mt-8 font-cinzel text-5xl font-light leading-[1.1] sm:text-7xl md:text-8xl flex flex-col items-center gap-2 sm:gap-4 select-none">
+          <span className="block">
+            <RevealText text="Vijay" delay={1.1} />
+          </span>
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 1.7 }}
+            className="block font-script text-4xl text-gold-soft sm:text-5xl select-none"
+          >
+            &amp;
+          </motion.span>
+          <span className="block">
+            <RevealText text="Rashmika" delay={2.0} />
+          </span>
+        </h1>
 
+        {/* Elegant gold divider */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1.4, delay: 1.4 }}
-          className="gold-divider mx-auto my-8 w-48"
+          transition={{ duration: 1.6, delay: 3.1 }}
+          className="gold-divider mx-auto my-10 w-56"
         />
 
+        {/* Invitation Text */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.6 }}
-          className="mx-auto max-w-md font-serif text-base italic leading-relaxed text-muted-foreground sm:text-lg"
+          transition={{ duration: 1.4, delay: 3.3 }}
+          className="mx-auto max-w-lg font-serif text-base italic leading-relaxed text-muted-foreground/90 sm:text-lg"
         >
           Together with their families, joyfully invite you to celebrate their union and the
           beginning of their forever.
         </motion.p>
 
+        {/* Star quote */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 2 }}
-          className="mt-6 font-script text-2xl text-gold sm:text-3xl"
+          transition={{ duration: 1.6, delay: 3.7 }}
+          className="mt-8 font-script text-3xl text-royal sm:text-4xl"
         >
           “A celebration written in the stars, sealed with love.”
         </motion.p>
 
+        {/* Elegant Scroll Down Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 2.4 }}
-          className="mt-16 flex flex-col items-center gap-3"
+          animate={{ opacity: 0.75 }}
+          transition={{ duration: 1.5, delay: 4.2 }}
+          className="mt-14 flex flex-col items-center gap-3"
         >
-          <span className="font-sans text-[10px] uppercase tracking-[0.4em] text-gold/70">
+          <span className="font-sans text-[9px] uppercase tracking-[0.5em] text-royal/60 font-semibold">
             Scroll to Explore
           </span>
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="h-12 w-px bg-gradient-to-b from-gold to-transparent"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            className="h-10 w-px bg-gradient-to-b from-royal/50 to-transparent"
           />
         </motion.div>
       </div>
-
-      
     </section>
   );
 }

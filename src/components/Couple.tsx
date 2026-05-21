@@ -46,9 +46,9 @@ export function Couple() {
                   alt={p.name}
                   className="h-full w-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0205]/95 via-[#1a0205]/20 to-transparent" />
                 <div className="absolute bottom-6 left-0 right-0 px-4 text-center">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-gold/90">
+                  <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-gold/95">
                     {p.role}
                   </p>
                   <h3 className="gold-gradient mt-2 font-serif text-3xl font-light">
@@ -58,7 +58,7 @@ export function Couple() {
                   {p.parents.map((line) => (
                     <p
                       key={line}
-                      className="font-serif text-sm italic text-foreground/85"
+                      className="font-serif text-sm italic text-[#fdfbf7]/90 font-light"
                     >
                       {line}
                     </p>

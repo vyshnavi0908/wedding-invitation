@@ -55,13 +55,13 @@ export function Countdown() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="gold-shimmer block font-serif text-2xl font-light leading-none text-foreground sm:text-[5rem] md:text-[6.5rem]"
+                  className="gold-shimmer block font-serif text-3xl min-[360px]:text-4xl min-[400px]:text-5xl sm:text-[5rem] md:text-[6.5rem] font-light leading-none text-foreground"
                 >
                   {String(val).padStart(2, "0")}
                 </motion.span>
               </AnimatePresence>
             </div>
-            <span className="mt-2 font-sans text-[10px] uppercase tracking-[0.18em] text-gold/80 sm:mt-4 sm:text-base sm:tracking-[0.35em]">
+             <span className="mt-2 font-sans text-[10px] uppercase tracking-[0.18em] text-royal/80 sm:mt-4 sm:text-base sm:tracking-[0.35em] font-semibold">
               {label}
             </span>
           </motion.div>
