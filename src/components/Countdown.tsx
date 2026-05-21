@@ -30,7 +30,7 @@ export function Countdown() {
   ];
 
   return (
-    <section className="relative px-6 py-16">
+    <section id="countdown" className="relative px-6 py-16">
       <SectionTitle
         eyebrow="Counting Down"
         title="Until We Say Forever"

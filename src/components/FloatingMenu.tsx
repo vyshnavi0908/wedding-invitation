@@ -10,7 +10,6 @@ const links = [
   { name: "Events", id: "events" },
   { name: "Gallery", id: "gallery" },
   { name: "Venue", id: "venue" },
-  { name: "RSVP", id: "rsvp" },
 ];
 
 export function FloatingMenu() {
@@ -23,7 +22,7 @@ export function FloatingMenu() {
         onClick={() => setOpen(true)}
         className="fixed right-5 top-5 z-[100] flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-black/30 backdrop-blur-xl transition hover:scale-105"
       >
-        <Menu className="h-7 w-7 text-gold" />
+        <Menu className="h-6 w-6 text-gold" />
       </button>
 
       <AnimatePresence>
@@ -44,30 +43,30 @@ export function FloatingMenu() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed right-0 top-0 z-50 flex h-full w-[82%] max-w-sm flex-col bg-[#050816]/95 px-10 py-24 shadow-2xl"
+              className="fixed right-0 top-0 z-50 flex h-full w-[70%] max-w-[260px] flex-col bg-[#050816]/95 px-8 py-20 shadow-2xl"
             >
               {/* Close */}
               <button
                 onClick={() => setOpen(false)}
                 className="absolute right-5 top-5"
               >
-                <X className="h-8 w-8 text-gold" />
+                <X className="h-6 w-6 text-gold" />
               </button>
 
               {/* Decorative Line */}
-              <div className="mb-12 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent" />
+              <div className="mb-10 h-px w-20 bg-gradient-to-r from-transparent via-gold to-transparent" />
 
               {/* Navigation Links */}
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-6">
                 {links.map((link, i) => (
                   <motion.a
                     key={link.id}
                     href={`#${link.id}`}
-                    initial={{ opacity: 0, x: 30 }}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.08 }}
+                    transition={{ delay: i * 0.05 }}
                     onClick={() => setOpen(false)}
-                    className="font-serif text-3xl tracking-[0.18em] text-white/90 transition duration-300 hover:text-gold"
+                    className="font-serif text-xl tracking-[0.12em] text-white/90 transition duration-300 hover:text-gold"
                   >
                     {link.name}
                   </motion.a>

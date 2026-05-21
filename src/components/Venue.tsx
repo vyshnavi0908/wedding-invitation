@@ -3,7 +3,7 @@ import { SectionTitle } from "./SectionTitle";
 
 export function Venue() {
   return (
-    <section className="relative px-6 py-16">
+    <section id="venue" className="relative px-6 py-16">
       <SectionTitle
         eyebrow="The Venue"
         title="Umaid Bhawan Palace"

@@ -49,7 +49,7 @@ const mapsHref = (q: string) =>
 
 export function Schedule() {
   return (
-    <section className="relative px-6 py-16">
+    <section id="events" className="relative px-6 py-16">
       <SectionTitle
         eyebrow="A Week of Wedding"
         title="The Festivities"

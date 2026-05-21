@@ -21,7 +21,7 @@ const items = [
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   return (
-    <section className="relative px-6 py-16">
+    <section id="gallery" className="relative px-6 py-16">
       <SectionTitle
         eyebrow="Memories in Bloom"
         title="Moments of Forever"
