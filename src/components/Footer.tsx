@@ -3,7 +3,7 @@ import { Particles } from "./Particles";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden px-6 py-24">
+    <footer id="rsvp" className="relative overflow-hidden px-6 py-24">
       <Particles count={20} />
       <motion.div
         initial={{ opacity: 0, y: 30 }}

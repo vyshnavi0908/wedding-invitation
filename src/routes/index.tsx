@@ -11,6 +11,7 @@ import { LiveWedding } from "@/components/LiveWedding";
 import { Countdown } from "@/components/Countdown";
 import { Footer } from "@/components/Footer";
 import { MusicToggle } from "@/components/MusicToggle";
+import { FloatingMenu } from "@/components/FloatingMenu";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,6 +48,7 @@ function Index() {
       <Envelope open={opened} onOpen={() => setOpened(true)} />
       {opened && (
         <>
+          <FloatingMenu />
           <Hero />
           <Couple />
           <Schedule />

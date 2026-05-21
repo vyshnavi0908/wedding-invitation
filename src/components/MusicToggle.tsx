@@ -74,7 +74,7 @@ export function MusicToggle({ active }: { active: boolean }) {
         transition={{ delay: 0.5, duration: 0.8 }}
         onClick={toggle}
         aria-label={playing ? "Pause music" : "Play music"}
-        className="fixed top-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 bg-background/70 text-gold backdrop-blur-md transition-all hover:bg-gold/20 hover:gold-glow"
+        className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 bg-background/70 text-gold backdrop-blur-md transition-all hover:bg-gold/20 hover:gold-glow"
       >
         {playing ? (
   <span className="text-gold">♫</span>

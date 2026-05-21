@@ -21,7 +21,7 @@ const people = [
 
 export function Couple() {
   return (
-    <section className="relative overflow-hidden px-6 py-16">
+    <section id="couple" className="relative overflow-hidden px-6 py-16">
       <Particles count={25} />
       <SectionTitle
         eyebrow="The Couple"

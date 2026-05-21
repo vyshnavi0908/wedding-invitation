@@ -4,26 +4,28 @@ import { Particles } from "./Particles";
 
 export function Hero() {
   return (
-    <section
+    <section id="home"
       className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-6 py-20"
       
     >
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, delay: 0.3 }}
-          className="mx-auto mb-8 flex h-24 w-24 items-center justify-center"
-        >
-          <svg viewBox="0 0 100 100" className="h-full w-full text-gold">
-            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            <path d="M50 14 L58 50 L50 86 L42 50 Z" fill="none" stroke="currentColor" strokeWidth="0.6" />
-            <path d="M14 50 L50 42 L86 50 L50 58 Z" fill="none" stroke="currentColor" strokeWidth="0.6" />
-            <circle cx="50" cy="50" r="4" fill="currentColor" opacity="0.6" />
-          </svg>
-        </motion.div>
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1.4, delay: 0.3 }}
+  className="mb-8 flex flex-col items-center"
+>
+  <span className="font-serif text-5xl text-gold sm:text-6xl">
+    ॐ
+  </span>
+
+  <p className="mt-2 font-serif text-xs italic tracking-[0.2em] text-gold/70 sm:text-base">
+    ॥ Om Gam Ganapataye Namah ॥
+  </p>
+
+  <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent" />
+</motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
