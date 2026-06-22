@@ -1,73 +1,138 @@
 import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { Particles } from "./Particles";
-import groom from "@/assets/groom.png";
-import bride from "@/assets/bride.png";
+import { translations } from "@/lib/translations";
+import couplePhoto from "@/assets/couple-photo.jpg";
 
-const people = [
-  {
-    src: groom,
-    name: "Vijay Deverakonda",
-    role: "The Groom",
-    parents: ["S/o Govardhan Rao Deverakonda", "& Madhavi Deverakonda"],
-  },
-  {
-    src: bride,
-    name: "Rashmika Mandanna",
-    role: "The Bride",
-    parents: ["D/o Madan Mandanna", "& Suman Mandanna"],
-  },
-];
+export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
+  const t = translations[lang];
 
-export function Couple() {
   return (
     <section id="couple" className="relative overflow-hidden px-6 py-16">
       <Particles count={25} />
       <SectionTitle
-        eyebrow="The Couple"
-        title="Virosh"
-        subtitle="From shared smiles to endless memories, their journey blossomed into a love story meant to last forever."
+        eyebrow={t.theCouple}
+        title={lang === "en" ? "Priya & Ravikanth" : "ప్రియ & రవికాంత్"}
+        subtitle={t.coupleSubtitle}
       />
 
-      <div className="relative z-10 mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
-        {people.map((p, i) => (
+      <div className="relative z-10 mx-auto mt-14 max-w-4xl">
+        {/* Unified Couple Landscape Frame */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          className="group relative glass-card overflow-hidden rounded-3xl p-3 hover:gold-glow"
+        >
+          <div className="relative aspect-[3/2] overflow-hidden rounded-2xl">
+            <img
+              src={couplePhoto}
+              alt="Priya and Ravikanth"
+              className="h-full w-full object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1a0205]/40 via-transparent to-transparent" />
+          </div>
+        </motion.div>
+
+        {/* Bride & Groom Symmetrical Details */}
+        <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {/* Bride Card */}
           <motion.div
-            key={p.name}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, delay: i * 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="glass-card rounded-3xl p-5 sm:p-8 border border-gold/15 flex flex-col justify-between"
           >
-            <div className="glass-card overflow-hidden rounded-3xl p-3">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
-                <img
-                  src={p.src}
-                  alt={p.name}
-                  className="h-full w-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0205]/95 via-[#1a0205]/20 to-transparent" />
-                <div className="absolute bottom-6 left-0 right-0 px-4 text-center">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-gold/95">
-                    {p.role}
+            <div>
+              <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.4em] text-[#9d7931] font-bold">
+                {t.theBride}
+              </p>
+              <h3 className="gold-gradient mt-3 font-serif text-3xl font-medium">
+                {lang === "en" ? "Venkata Satya Priya" : "వెంకట సత్య ప్రియ"}
+              </h3>
+              <p className="font-serif text-sm sm:text-base italic text-[#6b4021] mt-1.5 font-semibold">
+                {t.brideDegree}
+              </p>
+              <p className="font-sans text-xs sm:text-sm tracking-wide text-[#5f4b34] mt-2 leading-relaxed">
+                {t.brideEdu}
+              </p>
+              <div className="gold-divider my-5 w-20" />
+
+              <div className="space-y-4">
+                <div>
+                  <p className="font-sans text-xs uppercase tracking-[0.2em] text-[#9d7931] font-bold">
+                    {t.parents}
                   </p>
-                  <h3 className="gold-gradient mt-2 font-serif text-3xl font-light">
-                    {p.name}
-                  </h3>
-                  <div className="gold-divider mx-auto my-3 w-16" />
-                  {p.parents.map((line) => (
-                    <p
-                      key={line}
-                      className="font-serif text-sm italic text-[#fdfbf7]/90 font-light"
-                    >
-                      {line}
-                    </p>
-                  ))}
+                  <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
+                    {lang === "en" ? "D/o Sri Kallakuri Gollababu" : "శ్రీ కల్లకురి గొల్లబాబు"}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
+                    {lang === "en"
+                      ? "& Smt. Phanibhanu Jayasree"
+                      : "& శ్రీమతి ఫణిభాను జయశ్రీల పుత్రిక"}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="font-sans text-xs uppercase tracking-[0.2em] text-[#9d7931] font-bold">
+                    {t.divineBlessings}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
+                    {lang === "en"
+                      ? "Late Sri. Kallakuri Suryanarayana Rao"
+                      : "దివంగత శ్రీ కల్లకురి సూర్యనారాయణ రావు"}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
+                    {lang === "en"
+                      ? "& Late Smt. Veeravenkata Satyavathi"
+                      : "& దివంగత శ్రీమతి వీరవెంకట సత్యవతిల పౌత్రి"}
+                  </p>
                 </div>
               </div>
             </div>
           </motion.div>
-        ))}
+
+          {/* Groom Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="glass-card rounded-3xl p-5 sm:p-8 border border-gold/15 flex flex-col justify-between"
+          >
+            <div>
+              <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.4em] text-[#9d7931] font-bold">
+                {t.theGroom}
+              </p>
+              <h3 className="gold-gradient mt-3 font-serif text-3xl font-medium">
+                {lang === "en" ? "Ravikanth" : "రవికాంత్"}
+              </h3>
+              <p className="font-serif text-sm sm:text-base italic text-[#6b4021] mt-1.5 font-semibold">
+                {t.groomDegree}
+              </p>
+              <p className="font-sans text-xs sm:text-sm tracking-wide text-[#5f4b34] mt-2 leading-relaxed">
+                {t.groomEdu}
+              </p>
+              <div className="gold-divider my-5 w-20" />
+
+              <div className="space-y-4">
+                <div>
+                  <p className="font-sans text-xs uppercase tracking-[0.2em] text-[#9d7931] font-bold">
+                    {t.familyBlessings}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
+                    {t.familyBlessingsText1}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
+                    {t.familyBlessingsText2}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

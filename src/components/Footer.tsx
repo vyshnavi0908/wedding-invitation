@@ -1,55 +1,69 @@
 import { motion } from "framer-motion";
 import { Particles } from "./Particles";
+import { translations } from "@/lib/translations";
 
-export function Footer() {
+export function Footer({ lang = "en" }: { lang?: "en" | "te" }) {
+  const t = translations[lang];
+
   return (
-    <footer id="rsvp" className="relative overflow-hidden px-6 py-24">
+    <footer id="rsvp" className="relative overflow-hidden px-6 py-20 sm:py-24">
       <Particles count={20} />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.2 }}
-        className="relative z-10 mx-auto max-w-2xl text-center"
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        whileHover={{ y: -4 }}
+        className="relative z-10 mx-auto max-w-2xl text-center transition-all duration-500"
       >
-        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-royal/40 bg-royal/5">
-          <span className="font-script text-3xl text-royal">V&amp;R</span>
+        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-[#8d9c56]/28 bg-[#f8f4e4]">
+          <span className="font-script text-3xl text-[#623821]">P&amp;R</span>
         </div>
         <div className="gold-divider mx-auto mt-8 w-40" />
-        <p className="mt-8 font-script text-3xl text-royal sm:text-4xl">
-          “Two souls, one beautiful journey.”
+        <p className="mt-8 font-script text-3xl text-[#623821] leading-tight sm:text-4xl">
+          {t.twoSoulsQuote}
         </p>
-        <p className="mt-6 font-serif italic text-muted-foreground">
-          With love and gratitude — thank you for being part of our story.
-        </p>
-
-        <div className="gold-divider mx-auto mt-10 w-24" />
-        <p className="mt-8 font-sans text-[10px] uppercase tracking-[0.4em] text-royal/80 font-semibold">
-          Seeking Your Blessings
-        </p>
-        <p className="mx-auto mt-4 max-w-xl font-serif text-base italic leading-relaxed text-foreground/85 sm:text-lg">
-          As we step into this beautiful new chapter, we humbly seek your love, your prayers and
-          your heartfelt blessings. Your presence — in person or in spirit — will be the greatest gift
-          we could ask for as we begin our forever.
-        </p>
-
-        <p className="mt-8 font-script text-3xl text-royal sm:text-4xl">
-          — with love, Vijay &amp; Rashmika
+        <p className="mt-6 font-serif text-base italic leading-7 text-[#5f4b34] sm:text-lg">
+          {t.loveAndGratitude}
         </p>
 
         <div className="gold-divider mx-auto mt-10 w-24" />
-        <p className="mt-6 font-sans text-[10px] uppercase tracking-[0.4em] text-royal/70 font-semibold">
-          Vijay &amp; Rashmika · 26 . 06 . 2026 · Jodhpur
+        <p className="mt-8 font-sans text-xs sm:text-sm uppercase tracking-[0.4em] text-[#9d7931] font-bold">
+          {t.seekingBlessings}
+        </p>
+        <p className="mx-auto mt-4 max-w-xl font-serif text-base italic leading-relaxed text-[#5f4b34] sm:text-lg">
+          {t.seekingBlessingsText}
+        </p>
+
+        <p className="mt-8 font-script text-3xl text-[#623821] sm:text-4xl">
+          {t.withLoveSignature}
+        </p>
+
+        <div className="gold-divider mx-auto mt-10 w-24" />
+        <p className="mt-6 font-sans text-xs sm:text-sm uppercase tracking-[0.4em] text-[#9d7931] font-bold">
+          {lang === "en"
+            ? "Priya & Ravikanth · 02 . 07 . 2026 · Mandapeta"
+            : "ప్రియా & రవికాంత్ · 02 . 07 . 2026 · మండపేట"}
         </p>
 
         {/* Professional Designer Branding Footer */}
-        <div className="mt-16 text-royal/60 font-sans text-[10px] tracking-[0.2em] leading-relaxed">
-          <p>© {new Date().getFullYear()} Vijay &amp; Rashmika · All Rights Reserved</p>
-          <p className="mt-2 text-royal/40">
-            All Rights and All Reserved by <span className="font-semibold text-royal/50">DDD Dream Day Digitals</span>
+        <div className="mt-16 font-sans text-xs tracking-[0.2em] leading-relaxed text-[#6b4d38] sm:text-sm">
+          <p>
+            © {new Date().getFullYear()} {lang === "en" ? "Priya & Ravikanth" : "ప్రియా & రవికాంత్"}{" "}
+            · {t.copyright}
           </p>
-          <p className="mt-1.5 text-royal/40">
-            Contact Information: <a href="tel:+919966554231" className="hover:text-royal/60 underline decoration-royal/20 transition-all font-semibold">+91 9966554231</a>
+          <p className="mt-2 text-royal/70">
+            {t.brandingLine}{" "}
+            <span className="font-semibold text-royal/90">DDD Dream Day Digitals</span>
+          </p>
+          <p className="mt-1.5 text-royal/70">
+            {t.contactInfo}{" "}
+            <a
+              href="tel:+919966554231"
+              className="hover:text-royal/90 underline decoration-[#9d7931] transition-all font-semibold text-royal/90"
+            >
+              +91 9966554231
+            </a>
           </p>
         </div>
       </motion.div>

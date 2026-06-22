@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { createSeededRandom } from "@/lib/deterministic";
 
 export function Preloader({ onComplete }: { onComplete: () => void }) {
   const [enter, setEnter] = useState(false);
   const [mounted, setMounted] = useState(true);
+  const random = createSeededRandom(256);
 
   const handleEnter = () => {
     setEnter(true);
@@ -22,7 +24,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
           url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 C60 0, 80 20, 80 40 C80 60, 60 80, 40 80 C20 80, 0 60, 0 40 C0 20, 20 0, 40 0 Z' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/path%3E%3Cpath d='M40 10 C56 10, 70 24, 70 40 C70 56, 56 70, 40 70 C24 70, 10 56, 10 40 C10 24, 24 10, 40 10 Z' stroke='%23c59b27' stroke-width='0.2' fill='none' opacity='0.05' stroke-dasharray='2 2'%3E%3C/path%3E%3Cpath d='M0 40 L80 40 M40 0 L40 80' stroke='%23c59b27' stroke-width='0.15' fill='none' opacity='0.06'%3E%3C/path%3E%3Ccircle cx='40' cy='40' r='16' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/circle%3E%3C/svg%3E"),
           radial-gradient(ellipse at center, #fdfbf7 0%, #faecd0 70%, #f7dfb0 100%)
         `,
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: "fixed",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -36,10 +38,10 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
             key={i}
             className="absolute h-1.5 w-1.5 rounded-full bg-amber-500/25"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${random() * 100}%`,
+              top: `${random() * 100}%`,
               boxShadow: "0 0 8px rgba(245,158,11,0.25)",
-              animation: `float-particle ${6 + Math.random() * 6}s ease-in-out ${Math.random() * 2}s infinite`,
+              animation: `float-particle ${6 + random() * 6}s ease-in-out ${random() * 2}s infinite`,
             }}
           />
         ))}
@@ -121,7 +123,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0, y: 15 }}
           animate={enter ? { opacity: 0, y: -15 } : { opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1.2 }}
-          className="font-serif text-sm tracking-[0.25em] text-royal/80 font-medium italic uppercase"
+          className="font-serif text-base tracking-[0.2em] text-royal/85 font-medium italic uppercase"
         >
           ॥ Om Sri Ganeshaya Namah ॥
         </motion.p>
@@ -130,7 +132,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0, y: 15 }}
           animate={enter ? { opacity: 0, y: -15 } : { opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 1.2 }}
-          className="mt-2 font-serif text-xs tracking-[0.3em] text-royal/60 font-semibold uppercase"
+          className="mt-2 font-serif text-sm tracking-[0.22em] text-royal/70 font-semibold uppercase"
         >
           Shubh Vivah
         </motion.p>
@@ -146,14 +148,14 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
           transition={{ delay: 1.8, duration: 1.5 }}
           className="mt-8 font-cinzel text-2xl tracking-[0.2em] text-royal gold-shimmer font-semibold uppercase sm:text-4xl"
         >
-          Vijay &amp; Rashmika
+          Priya &amp; Ravikanth
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={enter ? { opacity: 0, y: -10 } : { opacity: 0.85 }}
           transition={{ delay: 2.2, duration: 1 }}
-          className="mt-3 font-serif text-xs italic text-royal/70 sm:text-sm tracking-[0.1em] font-medium"
+          className="mt-3 font-serif text-sm italic text-royal/75 sm:text-base tracking-[0.08em] font-medium"
         >
           Under the sky of starlit promises...
         </motion.p>
@@ -168,10 +170,13 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
           <button
             onClick={handleEnter}
             disabled={enter}
-            className="group relative cursor-pointer overflow-hidden rounded-full border border-royal/70 bg-transparent px-10 py-4 font-sans text-xs uppercase tracking-[0.4em] text-royal transition-all duration-700 hover:bg-royal hover:text-white hover:shadow-[0_10px_30px_rgba(110,22,32,0.20)]"
+            className="group relative cursor-pointer overflow-hidden rounded-full border border-royal/70 bg-transparent px-10 py-4 font-sans text-sm uppercase tracking-[0.22em] text-royal transition-all duration-700 hover:bg-royal hover:text-white hover:shadow-[0_10px_30px_rgba(110,22,32,0.20)]"
           >
             {/* Button inner shine shimmer overlay */}
-            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer" style={{ animationDuration: '1.5s' }} />
+            <div
+              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer"
+              style={{ animationDuration: "1.5s" }}
+            />
             Enter the Celebration
           </button>
         </motion.div>

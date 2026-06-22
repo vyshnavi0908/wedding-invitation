@@ -55,7 +55,9 @@ export function MusicToggle({ active }: { active: boolean }) {
       setPlaying(false);
     } else {
       a.volume = 0.4;
-      a.play().then(() => setPlaying(true)).catch(() => {});
+      a.play()
+        .then(() => setPlaying(true))
+        .catch(() => {});
     }
   };
 
@@ -63,23 +65,19 @@ export function MusicToggle({ active }: { active: boolean }) {
 
   return (
     <>
-      <audio
-        ref={audioRef}
-        loop
-        src={music}
-      />
+      <audio ref={audioRef} loop src={music} />
       <motion.button
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
         onClick={toggle}
         aria-label={playing ? "Pause music" : "Play music"}
-        className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-royal/30 bg-[#fdfbf7]/75 text-royal backdrop-blur-md shadow-lg transition-all hover:scale-105 duration-300 hover:bg-royal/5"
+        className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-gold/28 bg-[#f9f7ea]/88 text-[#623821] backdrop-blur-md shadow-[0_14px_35px_rgba(94,65,35,0.14)] transition-all hover:scale-105 duration-300 hover:bg-[#f8f4e4]/95"
       >
         {playing ? (
-          <span className="text-royal text-xl font-bold animate-pulse-music">♫</span>
+          <span className="text-[#623821] text-xl font-bold animate-pulse-music">♫</span>
         ) : (
-          <span className="text-royal/50 text-xl font-bold">♫</span>
+          <span className="text-[#623821]/55 text-xl font-bold">♫</span>
         )}
       </motion.button>
     </>

@@ -1,9 +1,24 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { translations } from "@/lib/translations";
+import { createSeededRandom } from "@/lib/deterministic";
 
-export function Envelope({ open, onOpen, onStartOpening }: { open: boolean; onOpen: () => void; onStartOpening?: () => void }) {
+export function Envelope({
+  open,
+  onOpen,
+  onStartOpening,
+  lang = "en",
+}: {
+  open: boolean;
+  onOpen: () => void;
+  onStartOpening?: () => void;
+  lang?: "en" | "te";
+}) {
   const [opening, setOpening] = useState(false);
+  const [topFlapBack, setTopFlapBack] = useState(false);
   const [cardRevealed, setCardRevealed] = useState(false);
+  const t = translations[lang];
+  const random = createSeededRandom(126);
 
   const handleOpen = () => {
     if (opening) return;
@@ -11,84 +26,82 @@ export function Envelope({ open, onOpen, onStartOpening }: { open: boolean; onOp
     if (onStartOpening) {
       onStartOpening();
     }
+
+    // Step 1: Wax seal fades out instantly (takes 0.3s)
     
-    // Step 1: Flaps open (duration 0.9s)
-    // Step 2: Inner Card slides up (after 0.8s)
+    // Step 2: Top flap rotates up (starts at 0.2s, takes 0.9s)
+    setTimeout(() => {
+      setTopFlapBack(true);
+    }, 650); // halfway through the rotation, switch zIndex behind the card
+
+    // Step 3: Inner Card slides up (starts at 0.95s, takes 1.3s)
     setTimeout(() => {
       setCardRevealed(true);
-    }, 850);
+    }, 950);
 
-    // Step 3: Trigger main page reveal (after 2.3s)
+    // Step 4: Trigger main page reveal (after 2.2s, right as card reaches its peak)
     setTimeout(() => {
       onOpen();
-    }, 2400);
+    }, 2200);
   };
 
   return (
     <motion.div
-      key="envelope"
+      key="envelope-view"
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden"
       style={{
-        background:
-          "radial-gradient(ellipse at center, #5c0f18 0%, #30050a 70%, #150103 100%)",
+        backgroundColor: "#e8e7e1",
+        backgroundImage: `
+          radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4) 0%, rgba(240, 238, 228, 0.2) 100%),
+          url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E")
+        `,
       }}
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      {/* Floating premium golden dust sparkles */}
+      {/* Floating premium red and violet sparkles */}
       <div className="pointer-events-none absolute inset-0">
-        {Array.from({ length: 35 }).map((_, i) => (
-          <span
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-amber-200/50"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              boxShadow: "0 0 6px rgba(255,220,150,0.8)",
-              animation: `float-particle ${6 + Math.random() * 6}s ease-in-out ${Math.random() * 3}s infinite`,
-            }}
-          />
-        ))}
+        {Array.from({ length: 25 }).map((_, i) => {
+          const bgClass = i % 2 === 0 ? "bg-[#be2e3a]/45" : "bg-[#5a189a]/45";
+          const glowColor = i % 2 === 0 ? "rgba(190,46,58,0.6)" : "rgba(90,24,154,0.6)";
+          return (
+            <span
+              key={i}
+              className={`absolute h-1.5 w-1.5 rounded-full ${bgClass}`}
+              style={{
+                left: `${random() * 100}%`,
+                top: `${random() * 100}%`,
+                boxShadow: `0 0 6px ${glowColor}`,
+                animation: `float-particle ${7 + random() * 5}s ease-in-out ${random() * 3}s infinite`,
+              }}
+            />
+          );
+        })}
       </div>
-
-      {/* Top greeting text */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: opening ? 0 : 1, y: opening ? -20 : 0 }}
-        transition={{ delay: 0.3, duration: 1.2 }}
-        className="mb-10 text-center px-4"
-        style={{ pointerEvents: opening ? "none" : "auto", zIndex: 20 }}
-      >
-        <p className="font-serif text-[10px] uppercase tracking-[0.4em] text-gold/60">
-          The Royal Wedding Invitation
-        </p>
-        <p className="font-script mt-2 text-4xl text-gold-soft drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:text-5xl">
-          You're Invited
-        </p>
-      </motion.div>
 
       {/* 3D Envelope Container */}
       <motion.div
-        initial={{ scale: 0.8, opacity: 0, y: 50 }}
+        initial={{ scale: 0.92, opacity: 0, y: 30 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 1.15, opacity: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-[92%] min-[360px]:w-[88%] sm:w-[420px] h-[440px] min-[360px]:h-[480px] sm:h-[580px] rounded-2xl flex items-center justify-center shadow-[0_30px_100px_rgba(0,0,0,0.8)] border border-gold/15"
-        style={{ 
-          perspective: "1500px", 
+        exit={{ scale: 1.08, opacity: 0, y: -20 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-[92%] min-[360px]:w-[86%] sm:w-[440px] h-[340px] min-[360px]:h-[380px] sm:h-[480px] rounded-2xl flex items-center justify-center shadow-[0_30px_90px_rgba(0,0,0,0.22)]"
+        style={{
+          perspective: "1500px",
           transformStyle: "preserve-3d",
-          background: "linear-gradient(135deg, #30050a, #150103)"
+          background: "#fafaf7",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E")`,
+          border: "1px solid rgba(197, 155, 39, 0.22)",
         }}
       >
         {/* Envelope Back Panel Lining */}
-        <div className="absolute inset-2 rounded-xl bg-[#2c0509] border border-gold/5 flex items-center justify-center overflow-hidden">
-          {/* Subtle elegant pattern background in envelope inner lining */}
-          <div 
-            className="absolute inset-0 opacity-15"
+        <div className="absolute inset-1 rounded-xl bg-[#f6f5ee] border border-gold/10 flex items-center justify-center overflow-hidden z-5">
+          <div
+            className="absolute inset-0 opacity-12"
             style={{
-              backgroundImage: `radial-gradient(circle at 50% 50%, #d4a02a 1.5px, transparent 1.5px)`,
-              backgroundSize: '20px 20px'
+              backgroundImage: `radial-gradient(circle at 50% 50%, #9d7931 1.25px, transparent 1.25px)`,
+              backgroundSize: "20px 20px",
             }}
           />
         </div>
@@ -98,142 +111,224 @@ export function Envelope({ open, onOpen, onStartOpening }: { open: boolean; onOp
           initial={{ y: 0, scale: 0.95, opacity: 0 }}
           animate={
             cardRevealed
-              ? { y: -100, scale: 1.05, opacity: 1, zIndex: 40 }
+              ? { y: -160, scale: 1.05, opacity: 1, zIndex: 15 }
               : opening
-              ? { opacity: 0.8, scale: 0.98 }
-              : { opacity: 0, scale: 0.95 }
+                ? { opacity: 0.8, scale: 0.98, y: 0 }
+                : { opacity: 0, scale: 0.95, y: 0 }
           }
-          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-4 rounded-xl border border-gold/45 p-6 flex flex-col items-center justify-center text-center shadow-[0_15px_35px_rgba(0,0,0,0.15)]"
+          transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-4 rounded-xl border border-gold/45 p-4 sm:p-6 flex flex-col items-center justify-center text-center shadow-[0_12px_28px_rgba(0,0,0,0.08)] bg-[#fdfdfb]"
           style={{
-            background: `
-              radial-gradient(circle at center, rgba(253, 251, 247, 0.4) 0%, rgba(247, 241, 227, 0.6) 100%),
-              url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 C60 0, 80 20, 80 40 C80 60, 60 80, 40 80 C20 80, 0 60, 0 40 C0 20, 20 0, 40 0 Z' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/path%3E%3Cpath d='M40 10 C56 10, 70 24, 70 40 C70 56, 56 70, 40 70 C24 70, 10 56, 10 40 C10 24, 24 10, 40 10 Z' stroke='%23c59b27' stroke-width='0.2' fill='none' opacity='0.05' stroke-dasharray='2 2'%3E%3C/path%3E%3Cpath d='M0 40 L80 40 M40 0 L40 80' stroke='%23c59b27' stroke-width='0.15' fill='none' opacity='0.06'%3E%3C/path%3E%3Ccircle cx='40' cy='40' r='16' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/circle%3E%3C/svg%3E"),
-              linear-gradient(145deg, #fdfbf7 0%, #f7f1e3 100%)
+            backgroundImage: `
+              radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(250, 245, 225, 0.92) 100%),
+              url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E")
             `,
-            boxShadow: "inset 0 0 20px rgba(212,160,42,0.12)"
+            boxShadow: "inset 0 0 24px rgba(157, 121, 49, 0.08)",
           }}
         >
           {/* Card Corner Borders */}
-          <div className="absolute inset-2.5 border border-royal/15 pointer-events-none rounded-lg" />
-          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-royal/50 rounded-tl" />
-          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-royal/50 rounded-tr" />
-          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-royal/50 rounded-bl" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-royal/50 rounded-br" />
+          <div className="absolute inset-2.5 border border-[#9d7931]/25 pointer-events-none rounded-lg" />
+          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-[#9d7931]/60 rounded-tl" />
+          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#9d7931]/60 rounded-tr" />
+          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-[#9d7931]/60 rounded-bl" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-[#9d7931]/60 rounded-br" />
 
-          <span className="font-serif text-3xl text-royal mb-3">ॐ</span>
-          <p className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.4em] text-royal/80 font-medium">
-            Save The Date
+          <span className="font-serif text-2xl sm:text-4xl text-royal mb-1 sm:mb-2 animate-golden-glint">ॐ</span>
+          <p className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.28em] text-[#9d7931] font-bold">
+            {t.saveTheDate}
           </p>
-          <div className="gold-divider w-12 my-2 sm:my-3" />
-          <h2 className="font-cinzel text-2xl sm:text-3xl text-royal font-medium leading-snug">
-            Vijay <br />
-            <span className="font-script text-2xl text-royal/70 my-1 block">&amp;</span>
-            Rashmika
+          <div className="w-12 my-1.5 sm:my-2.5" style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(157,121,49,.5), transparent)" }} />
+          <h2 className="font-cinzel text-xl sm:text-3xl text-royal font-bold leading-normal">
+            {lang === "en" ? "Priya" : "ప్రియ"} <br />
+            <span className="font-script text-xl sm:text-2xl text-[#9d7931] my-0 sm:my-0.5 block">&amp;</span>
+            {lang === "en" ? "Ravikanth" : "రవికాంత్"}
           </h2>
-          <div className="gold-divider w-12 my-2 sm:my-3" />
-          <p className="font-serif text-xs italic text-royal/70 font-semibold">
-            26 . 06 . 2026
+          <div className="w-12 my-1.5 sm:my-2.5" style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(157,121,49,.5), transparent)" }} />
+          <p className="font-serif text-xs sm:text-base italic text-[#6b4021] font-semibold">02 . 07 . 2026</p>
+          <p className="font-sans text-[9px] sm:text-xs uppercase tracking-[0.22em] text-[#9d7931] mt-1.5 sm:mt-2 font-bold">
+            {lang === "en" ? "Reddy Rambabu Residencies" : "రెడ్డి రాంబాబు రెసిడెన్సీస్"}
           </p>
-          <p className="font-sans text-[8px] uppercase tracking-[0.25em] text-royal/60 mt-3 font-semibold">
-            Umaid Bhawan Palace
-          </p>
-          <p className="font-serif text-[10px] italic text-royal/70 mt-1 font-semibold">
-            Jodhpur, Rajasthan
+          <p className="font-serif text-[10px] sm:text-sm italic text-[#5b402b] mt-0.5 font-bold">
+            {lang === "en" ? "Alamuru Road, Mandapeta" : "ఆలమూరు రోడ్, మండపేట"}
           </p>
         </motion.div>
 
-        {/* Left Wing Flap */}
+        {/* 3D Folding Top Flap (Double-Sided) */}
         <motion.div
-          className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#6e1620] via-[#500e16] to-[#30050a] border-r border-amber-300/20 shadow-[inset_0_0_40px_rgba(0,0,0,0.5)] rounded-l-2xl"
+          className="absolute inset-x-0 top-0 h-1/2"
           style={{
-            transformOrigin: "left center",
+            transformOrigin: "top center",
             transformStyle: "preserve-3d",
-            backfaceVisibility: "hidden",
-            zIndex: 30
+            zIndex: topFlapBack ? 10 : 25,
           }}
-          animate={opening ? { rotateY: -125 } : { rotateY: 0 }}
-          transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1] }}
+          animate={opening ? { rotateX: -180 } : { rotateX: 0 }}
+          transition={{ delay: 0.2, duration: 0.9, ease: "easeInOut" }}
         >
-          {/* Outer gold border line on left flap */}
-          <div className="absolute inset-2 border-r-0 border border-gold/15 rounded-l-lg pointer-events-none" />
-        </motion.div>
-
-        {/* Right Wing Flap */}
-        <motion.div
-          className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#6e1620] via-[#500e16] to-[#30050a] border-l border-amber-300/20 shadow-[inset_0_0_40px_rgba(0,0,0,0.5)] rounded-r-2xl"
-          style={{
-            transformOrigin: "right center",
-            transformStyle: "preserve-3d",
-            backfaceVisibility: "hidden",
-            zIndex: 30
-          }}
-          animate={opening ? { rotateY: 125 } : { rotateY: 0 }}
-          transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1] }}
-        >
-          {/* Outer gold border line on right flap */}
-          <div className="absolute inset-2 border-l-0 border border-gold/15 rounded-r-lg pointer-events-none" />
-        </motion.div>
-
-        {/* Central Vertical Border Overlap */}
-        {!opening && (
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-gold/10 z-35" />
-        )}
-
-        {/* Interactive Wax Seal — Clickable */}
-        <motion.button
-          onClick={handleOpen}
-          disabled={opening}
-          aria-label="Open invitation"
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer focus:outline-none pointer-events-auto"
-          style={{ zIndex: 50 }}
-          animate={
-            opening
-              ? { scale: 0, opacity: 0, rotate: 110 }
-              : { scale: 1, opacity: 1, rotate: 0 }
-          }
-          transition={{ duration: 0.6, ease: "easeIn" }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.92 }}
-        >
-          <motion.div
-            className="relative flex h-20 w-20 items-center justify-center rounded-full sm:h-24 sm:w-24 shadow-2xl"
-            animate={{
-              boxShadow: [
-                "0 0 20px rgba(255,200,120,0.4), inset 0 -3px 8px rgba(0,0,0,0.5)",
-                "0 0 45px rgba(255,200,120,0.8), inset 0 -3px 8px rgba(0,0,0,0.5)",
-                "0 0 20px rgba(255,200,120,0.4), inset 0 -3px 8px rgba(0,0,0,0.5)",
-              ],
+          {/* Outer Top Flap (visible when closed) */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backfaceVisibility: "hidden",
+              zIndex: 2,
             }}
-            transition={{ duration: 2.2, repeat: Infinity }}
           >
-            {/* Wax seal background */}
+            <svg
+              className="w-full h-full drop-shadow-[0_8px_16px_rgba(0,0,0,0.12)]"
+              viewBox="0 0 100 50"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="topOuterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#fafaf7" />
+                  <stop offset="100%" stopColor="#dfdcd0" />
+                </linearGradient>
+              </defs>
+              <polygon points="0,0 50,50 100,0" fill="url(#topOuterGrad)" />
+              <path d="M0,0 L50,50 L100,0" stroke="rgba(197,155,39,0.35)" strokeWidth="0.75" fill="none" />
+            </svg>
+          </div>
+
+          {/* Inner Top Flap (visible when opened, shows inner lining) */}
+          <div
+            className="absolute inset-0"
+            style={{
+              transform: "rotateX(180deg)",
+              backfaceVisibility: "hidden",
+              zIndex: 1,
+            }}
+          >
+            <svg
+              className="w-full h-full drop-shadow-[0_-8px_16px_rgba(0,0,0,0.12)]"
+              viewBox="0 0 100 50"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="topInnerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stopColor="#dad7c4" />
+                  <stop offset="100%" stopColor="#fafaf7" />
+                </linearGradient>
+              </defs>
+              <polygon points="0,50 50,0 100,50" fill="url(#topInnerGrad)" />
+              <path d="M0,50 L50,0 L100,50" stroke="rgba(197,155,39,0.35)" strokeWidth="0.75" fill="none" />
+            </svg>
+            {/* Dots lining inside the flap */}
             <div
-              className="absolute inset-0 rounded-full"
+              className="absolute inset-0 opacity-12"
               style={{
-                background:
-                  "radial-gradient(circle at 35% 30%, #f5d27a 0%, #d4a02a 35%, #9a6a18 80%)",
+                clipPath: "polygon(0% 100%, 50% 0%, 100% 100%)",
+                backgroundImage: `radial-gradient(circle at 50% 50%, #9d7931 1.25px, transparent 1.25px)`,
+                backgroundSize: "20px 20px",
               }}
             />
-            {/* Seal Inner Border */}
-            <div className="absolute inset-1.5 rounded-full border border-amber-950/40" />
-            <span className="relative font-serif text-2xl font-bold italic text-amber-950 sm:text-3xl tracking-tight select-none">
-              V&amp;R
-            </span>
-          </motion.div>
-        </motion.button>
+          </div>
+        </motion.div>
+
+        {/* Left Side Flap */}
+        <div className="absolute inset-y-0 left-0 w-1/2 z-11 pointer-events-none">
+          <svg className="w-full h-full drop-shadow-[6px_2px_12px_rgba(0,0,0,0.06)]" viewBox="0 0 50 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="leftFlapGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#fafaf7" />
+                <stop offset="100%" stopColor="#e8e5d8" />
+              </linearGradient>
+            </defs>
+            <polygon points="0,0 50,50 0,100" fill="url(#leftFlapGrad)" />
+            <path d="M0,0 L50,50 L0,100" stroke="rgba(197,155,39,0.35)" strokeWidth="0.75" fill="none" />
+          </svg>
+        </div>
+
+        {/* Right Side Flap */}
+        <div className="absolute inset-y-0 right-0 w-1/2 z-11 pointer-events-none">
+          <svg className="w-full h-full drop-shadow-[-6px_2px_12px_rgba(0,0,0,0.06)]" viewBox="0 0 50 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="rightFlapGrad" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#fafaf7" />
+                <stop offset="100%" stopColor="#e8e5d8" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,0 0,50 50,100" fill="url(#rightFlapGrad)" />
+            <path d="M50,0 L0,50 L50,100" stroke="rgba(197,155,39,0.35)" strokeWidth="0.75" fill="none" />
+          </svg>
+        </div>
+
+        {/* Bottom Flap */}
+        <div className="absolute inset-x-0 bottom-0 h-[52%] z-21 pointer-events-none">
+          <svg className="w-full h-full drop-shadow-[0_-8px_20px_rgba(0,0,0,0.1)]" viewBox="0 0 100 52" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="bottomFlapGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#fafaf7" />
+                <stop offset="100%" stopColor="#e2dfd2" />
+              </linearGradient>
+            </defs>
+            <polygon points="0,52 50,0 100,52" fill="url(#bottomFlapGrad)" />
+            <path d="M0,52 L50,0 L100,52" stroke="rgba(197,155,39,0.35)" strokeWidth="0.75" fill="none" />
+          </svg>
+        </div>
+
+        {/* Wax Seal Overlay (Centered on intersection, clicked to open) */}
+        <AnimatePresence>
+          {!opening && (
+            <motion.button
+              onClick={handleOpen}
+              initial={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
+              animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
+              exit={{ scale: 0, opacity: 0, x: "-50%", y: "-50%", rotate: 120 }}
+              transition={{ duration: 0.5 }}
+              className="absolute left-1/2 top-1/2 cursor-pointer z-40 focus:outline-none pointer-events-auto"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.94 }}
+              aria-label={lang === "en" ? "Open invitation" : "ఆహ్వానాన్ని తెరవండి"}
+            >
+              <motion.div
+                className="relative flex h-20 w-20 items-center justify-center rounded-full sm:h-24 sm:w-24 shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
+                animate={{
+                  boxShadow: [
+                    "0 6px 20px rgba(180,140,50,0.22), inset 0 -3px 8px rgba(0,0,0,0.18)",
+                    "0 6px 36px rgba(180,140,50,0.42), inset 0 -3px 8px rgba(0,0,0,0.18)",
+                    "0 6px 20px rgba(180,140,50,0.22), inset 0 -3px 8px rgba(0,0,0,0.18)",
+                  ],
+                }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+              >
+                {/* Wax seal background */}
+                <div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 35% 30%, #ec5a62 0%, #b41822 45%, #6e0c12 85%)",
+                  }}
+                />
+                {/* Seal Inner Border */}
+                <div className="absolute inset-1.5 rounded-full border border-[#500b0e]/30" />
+                
+                {/* Heart Symbol inside wax seal */}
+                <svg viewBox="0 0 100 100" className="relative w-11 h-11 text-[#4a0709] opacity-80">
+                  <path
+                    d="M50,38 C44,26 28,24 22,34 C12,47 24,63 50,81 C76,63 88,47 78,34 C72,24 56,26 50,38 Z M50,43 C46,33 34,31 29,38 C21,48 30,60 50,74 C70,60 79,48 71,38 C66,31 54,33 50,43 Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </motion.div>
+            </motion.button>
+          )}
+        </AnimatePresence>
       </motion.div>
 
-      {/* Bottom helper text */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: opening ? 0 : 1, y: opening ? 20 : 0 }}
-        transition={{ delay: 0.2, duration: 0.7 }}
-        className="font-script mt-10 text-2xl text-gold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] sm:text-3xl animate-pulse"
-        style={{ pointerEvents: opening ? "none" : "auto", zIndex: 20 }}
-      >
-        Tap the Royal Seal to open
-      </motion.p>
+      {/* Helper text below the envelope */}
+      <AnimatePresence>
+        {!opening && (
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 15 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mt-8 font-serif text-lg tracking-wide text-[#6b553c] sm:text-xl font-medium animate-pulse"
+            style={{ zIndex: 30 }}
+          >
+            {lang === "en" ? "Click to open" : "తెరవడానికి క్లిక్ చేయండి"}
+          </motion.p>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

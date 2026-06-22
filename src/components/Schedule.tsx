@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
+import { translations } from "@/lib/translations";
 
 // Custom premium animated SVG icon components
 function HaldiIcon() {
   return (
     <div className="animate-sway-flower relative w-14 h-14 flex items-center justify-center">
-      <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 100 100"
+        className="w-full h-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <radialGradient id="haldi-grad" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#ffe893" />
@@ -51,7 +58,12 @@ function HaldiIcon() {
 function MehendiIcon() {
   return (
     <div className="animate-slow-spin relative w-14 h-14 flex items-center justify-center">
-      <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 100 100"
+        className="w-full h-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <linearGradient id="gold-icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#f5d27a" />
@@ -60,7 +72,14 @@ function MehendiIcon() {
           </linearGradient>
         </defs>
         {/* Intricate detailed mandala design representing Henna art */}
-        <circle cx="50" cy="50" r="45" stroke="url(#gold-icon-grad)" strokeWidth="0.75" strokeDasharray="3 3" />
+        <circle
+          cx="50"
+          cy="50"
+          r="45"
+          stroke="url(#gold-icon-grad)"
+          strokeWidth="0.75"
+          strokeDasharray="3 3"
+        />
         <circle cx="50" cy="50" r="38" stroke="url(#gold-icon-grad)" strokeWidth="1.2" />
         {Array.from({ length: 16 }).map((_, i) => (
           <path
@@ -92,7 +111,12 @@ function MehendiIcon() {
 function SangeetIcon() {
   return (
     <div className="animate-pulse-music relative w-14 h-14 flex items-center justify-center">
-      <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 100 100"
+        className="w-full h-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
           d="M32 72 V22 C32 17, 52 12, 78 17 V67"
           stroke="url(#gold-icon-grad)"
@@ -113,8 +137,22 @@ function SangeetIcon() {
           strokeLinecap="round"
         />
         {/* Double music notes heads */}
-        <ellipse cx="23" cy="72" rx="9" ry="7" fill="url(#gold-icon-grad)" transform="rotate(-15 23 72)" />
-        <ellipse cx="69" cy="67" rx="9" ry="7" fill="url(#gold-icon-grad)" transform="rotate(-15 69 67)" />
+        <ellipse
+          cx="23"
+          cy="72"
+          rx="9"
+          ry="7"
+          fill="url(#gold-icon-grad)"
+          transform="rotate(-15 23 72)"
+        />
+        <ellipse
+          cx="69"
+          cy="67"
+          rx="9"
+          ry="7"
+          fill="url(#gold-icon-grad)"
+          transform="rotate(-15 69 67)"
+        />
         {/* Traditional instrument elements (Dhol outline) or sparkles */}
         <path d="M12 25 L16 19 L22 25 L16 31 Z" fill="url(#gold-icon-grad)" />
         <path d="M84 28 L86 24 L90 28 L86 32 Z" fill="url(#gold-icon-grad)" />
@@ -126,7 +164,12 @@ function SangeetIcon() {
 function WeddingIcon() {
   return (
     <div className="animate-golden-glint relative w-14 h-14 flex items-center justify-center">
-      <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 100 100"
+        className="w-full h-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         {/* Groom's and Bride's Interlocked Royal Wedding Rings */}
         <circle cx="38" cy="56" r="23" stroke="url(#gold-icon-grad)" strokeWidth="3" />
         <circle cx="62" cy="56" r="23" stroke="url(#gold-icon-grad)" strokeWidth="3" />
@@ -139,16 +182,37 @@ function WeddingIcon() {
             strokeWidth="0.5"
           />
           {/* Diamond shine facets */}
-          <line x1="0" y1="-15" x2="0" y2="5" stroke="#fff" strokeWidth="0.5" className="opacity-60" />
-          <line x1="-10" y1="-5" x2="5" y2="5" stroke="#fff" strokeWidth="0.4" className="opacity-40" />
-          <line x1="10" y1="-5" x2="-5" y2="5" stroke="#fff" strokeWidth="0.4" className="opacity-40" />
+          <line
+            x1="0"
+            y1="-15"
+            x2="0"
+            y2="5"
+            stroke="#fff"
+            strokeWidth="0.5"
+            className="opacity-60"
+          />
+          <line
+            x1="-10"
+            y1="-5"
+            x2="5"
+            y2="5"
+            stroke="#fff"
+            strokeWidth="0.4"
+            className="opacity-40"
+          />
+          <line
+            x1="10"
+            y1="-5"
+            x2="-5"
+            y2="5"
+            stroke="#fff"
+            strokeWidth="0.4"
+            className="opacity-40"
+          />
         </g>
         {/* Crown crownlet details on Groom's ring */}
         <g transform="translate(38, 33)">
-          <path
-            d="M-8 0 L-6 -8 L-2 -3 L2 -8 L6 0 Z"
-            fill="url(#gold-icon-grad)"
-          />
+          <path d="M-8 0 L-6 -8 L-2 -3 L2 -8 L6 0 Z" fill="url(#gold-icon-grad)" />
         </g>
       </svg>
     </div>
@@ -158,7 +222,12 @@ function WeddingIcon() {
 function ReceptionIcon() {
   return (
     <div className="relative w-16 h-14 flex items-center justify-center">
-      <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 100 100"
+        className="w-full h-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         {/* Left clinking champagne flute */}
         <g className="animate-clink-left">
           <path
@@ -175,7 +244,12 @@ function ReceptionIcon() {
             fillOpacity="0.6"
           />
           <line x1="41" y1="52" x2="41" y2="76" stroke="url(#gold-icon-grad)" strokeWidth="2.5" />
-          <path d="M30 76 H52" stroke="url(#gold-icon-grad)" strokeWidth="2.5" strokeLinecap="round" />
+          <path
+            d="M30 76 H52"
+            stroke="url(#gold-icon-grad)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
         </g>
         {/* Right clinking champagne flute */}
         <g className="animate-clink-right">
@@ -193,7 +267,12 @@ function ReceptionIcon() {
             fillOpacity="0.6"
           />
           <line x1="59" y1="52" x2="59" y2="76" stroke="url(#gold-icon-grad)" strokeWidth="2.5" />
-          <path d="M48 76 H70" stroke="url(#gold-icon-grad)" strokeWidth="2.5" strokeLinecap="round" />
+          <path
+            d="M48 76 H70"
+            stroke="url(#gold-icon-grad)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
         </g>
         {/* Clinking sparkles and tiny rising bubbles */}
         <path
@@ -201,67 +280,192 @@ function ReceptionIcon() {
           fill="url(#gold-icon-grad)"
           className="animate-pulse"
         />
-        <circle cx="48" cy="30" r="1.5" fill="url(#gold-icon-grad)" className="animate-ping" style={{ animationDuration: '2s' }} />
-        <circle cx="53" cy="27" r="1" fill="url(#gold-icon-grad)" className="animate-ping" style={{ animationDuration: '1.5s' }} />
+        <circle
+          cx="48"
+          cy="30"
+          r="1.5"
+          fill="url(#gold-icon-grad)"
+          className="animate-ping"
+          style={{ animationDuration: "2s" }}
+        />
+        <circle
+          cx="53"
+          cy="27"
+          r="1"
+          fill="url(#gold-icon-grad)"
+          className="animate-ping"
+          style={{ animationDuration: "1.5s" }}
+        />
       </svg>
     </div>
   );
 }
 
-const events = [
-  {
-    icon: <HaldiIcon />,
-    title: "Haldi Ceremony",
-    desc: "A radiant morning of golden blessings and laughter.",
-    date: "February 24, 2026",
-    time: "10:00 AM onwards",
-    venue: "Royal Courtyard, Umaid Bhawan Palace",
-  },
-  {
-    icon: <MehendiIcon />,
-    title: "Mehendi Ceremony",
-    desc: "Intricate art, soft music, and timeless tradition.",
-    date: "February 24, 2026",
-    time: "5:00 PM onwards",
-    venue: "Zenana Garden, Umaid Bhawan Palace",
-  },
-  {
-    icon: <SangeetIcon />,
-    title: "Sangeet Night",
-    desc: "An evening of music, dance, and joyful celebration.",
-    date: "February 25, 2026",
-    time: "7:00 PM onwards",
-    venue: "Moonlight Terrace, Umaid Bhawan Palace",
-  },
-  {
-    icon: <WeddingIcon />,
-    title: "The Wedding",
-    desc: "Two souls united under a sky of starlit promises.",
-    date: "February 26, 2026",
-    time: "6:30 PM onwards",
-    venue: "Grand Palace Lawn, Umaid Bhawan Palace",
-  },
-  {
-    icon: <ReceptionIcon />,
-    title: "Wedding Reception",
-    desc: "A grand evening to toast new beginnings.",
-    date: "February 27, 2026",
-    time: "8:00 PM onwards",
-    venue: "Imperial Ballroom, Umaid Bhawan Palace",
-  },
+const eventDates = [
+  new Date("2026-06-28T08:00:00+05:30").getTime(), // Haldi
+  new Date("2026-06-28T18:00:00+05:30").getTime(), // Sangeet
+  new Date("2026-07-01T12:15:00+05:30").getTime(), // Welcome
+  new Date("2026-07-01T13:00:00+05:30").getTime(), // Lunch
+  new Date("2026-07-01T16:00:00+05:30").getTime(), // Engagement
+  new Date("2026-07-03T01:51:00+05:30").getTime(), // Wedding
+  new Date("2026-07-02T18:00:00+05:30").getTime(), // Reception
 ];
+
+function EventTimer({ targetTime, lang }: { targetTime: number; lang: "en" | "te" }) {
+  const [timeLeft, setTimeLeft] = useState(targetTime - Date.now());
+  const t = translations[lang];
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTimeLeft(targetTime - Date.now());
+    }, 1000);
+    return () => clearInterval(id);
+  }, [targetTime]);
+
+  const threeHours = 3 * 3600000;
+  const units = lang === "en"
+    ? ["Days", "Hrs", "Mins", "Secs"]
+    : ["రోజులు", "గంటలు", "నిమిషాలు", "సెకన్లు"];
+
+  if (timeLeft < -threeHours) {
+    return (
+      <div className="mt-5 rounded-3xl border border-emerald-500/20 bg-emerald-500/8 p-4 shadow-[0_12px_30px_rgba(16,185,129,0.08)]">
+        <div className="flex items-center justify-between gap-4">
+          <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.22em] text-emerald-800 font-bold">
+            {t.startsIn}
+          </span>
+          <span className="rounded-full border border-emerald-500/20 bg-white/70 px-3 py-1 font-sans text-xs uppercase tracking-[0.22em] text-emerald-700 font-bold">
+            ✓ {t.completed}
+          </span>
+        </div>
+        <div className="mt-3 grid grid-cols-4 gap-1.5 text-center">
+          {[
+            ["00", units[0]],
+            ["00", units[1]],
+            ["00", units[2]],
+            ["00", units[3]],
+          ].map(([value, unit]) => (
+            <div key={unit} className="rounded-2xl border border-emerald-500/15 bg-white/75 px-0.5 py-2.5 min-[360px]:px-1 sm:px-2 sm:py-3">
+              <div className="font-serif text-xl sm:text-2xl font-semibold leading-none text-emerald-800">{value}</div>
+              <div className="mt-1 font-sans text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-emerald-700 font-semibold">
+                {unit}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (timeLeft <= 0 && timeLeft >= -threeHours) {
+    return (
+      <div className="mt-5 rounded-3xl border border-amber-500/20 bg-amber-500/10 p-4 shadow-[0_12px_30px_rgba(245,158,11,0.08)]">
+        <div className="flex items-center justify-between gap-4">
+          <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.22em] text-amber-800 font-bold">
+            {t.startsIn}
+          </span>
+          <span className="rounded-full border border-amber-500/20 bg-white/70 px-3 py-1 font-sans text-xs uppercase tracking-[0.22em] text-amber-800 font-bold animate-pulse">
+            {t.happeningNow}
+          </span>
+        </div>
+        <div className="mt-3 grid grid-cols-4 gap-1.5 text-center">
+          {[
+            ["00", units[0]],
+            ["00", units[1]],
+            ["00", units[2]],
+            ["00", units[3]],
+          ].map(([value, unit]) => (
+            <div key={unit} className="rounded-2xl border border-amber-500/15 bg-white/75 px-0.5 py-2.5 min-[360px]:px-1 sm:px-2 sm:py-3">
+              <div className="font-serif text-xl sm:text-2xl font-semibold leading-none text-amber-900">{value}</div>
+              <div className="mt-1 font-sans text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-amber-800 font-semibold">
+                {unit}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  const days = Math.floor(timeLeft / 86400000);
+  const hours = Math.floor((timeLeft / 3600000) % 24);
+  const minutes = Math.floor((timeLeft / 60000) % 60);
+  const seconds = Math.floor((timeLeft / 1000) % 60);
+
+  const countdownText =
+    lang === "en"
+      ? `${days}${t.days} ${hours}${t.hours} ${minutes}${t.minutes} ${seconds}${t.seconds}`
+      : `${days} ${t.daysLabel} ${hours} ${t.hoursLabel} ${minutes} ${t.minutesLabel} ${seconds} ${t.secondsLabel}`;
+
+  return (
+    <div className="mt-5 rounded-3xl border border-royal/12 bg-[#fffaf0]/90 p-4 shadow-[0_12px_30px_rgba(110,22,32,0.06)]">
+      <div className="flex items-center justify-between gap-4">
+        <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.22em] text-royal/90 font-bold">
+          {t.startsIn}
+        </span>
+      </div>
+
+      <div className="mt-4 grid grid-cols-4 gap-1.5 text-center">
+        {[
+          [String(days).padStart(2, "0"), units[0]],
+          [String(hours).padStart(2, "0"), units[1]],
+          [String(minutes).padStart(2, "0"), units[2]],
+          [String(seconds).padStart(2, "0"), units[3]],
+        ].map(([value, unit]) => (
+          <div key={unit} className="rounded-2xl border border-gold/20 bg-white/70 px-0.5 py-2.5 min-[360px]:px-1 sm:px-2 sm:py-3">
+            <div className="font-serif text-2xl sm:text-3xl font-semibold leading-none text-foreground">
+              {value}
+            </div>
+            <div className="mt-1.5 font-sans text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-[#9d7931] font-bold">
+              {unit}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const mapsHref = (q: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
-export function Schedule() {
+export function Schedule({ lang = "en" }: { lang?: "en" | "te" }) {
+  const t = translations[lang];
+
+  const englishVenues = [
+    "BABU & BABU, Mandapeta",
+    "BABU & BABU, Mandapeta",
+    "SRI KANYA GRAND Function Hall, Mandapeta",
+    "SRI KANYA GRAND Function Hall, Mandapeta",
+    "SRI KANYA GRAND Function Hall, Mandapeta",
+    "Reddy Rambabu Residencies, Alamuru Road, Mandapeta",
+    "Reddy Rambabu Residencies, Alamuru Road, Mandapeta",
+  ];
+
+  const events = t.eventsData.map((e, idx) => ({
+    ...e,
+    icon:
+      idx === 0 ? (
+        <HaldiIcon />
+      ) : idx === 1 ? (
+        <SangeetIcon />
+      ) : idx === 2 ? (
+        <MehendiIcon />
+      ) : idx === 3 ? (
+        <ReceptionIcon />
+      ) : idx === 4 ? (
+        <MehendiIcon />
+      ) : idx === 5 ? (
+        <WeddingIcon />
+      ) : (
+        <ReceptionIcon />
+      ),
+    targetTime: eventDates[idx],
+  }));
+
   return (
     <section id="events" className="relative px-6 py-20 z-10">
-      <SectionTitle
-        eyebrow="A Week of Wedding"
-        title="The Festivities"
-        subtitle="A beautiful week of wedding celebrations, blessings, and timeless traditions at Umaid Bhawan Palace."
-      />
+      <SectionTitle eyebrow={t.home} title={t.festivitiesTitle} subtitle={t.festivitiesSubtitle} />
 
       <div className="mx-auto mt-20 grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {events.map((e, i) => (
@@ -272,44 +476,56 @@ export function Schedule() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1.2, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -8 }}
-            className="glass-card card-shimmer-sweep group relative flex flex-col rounded-3xl p-6 sm:p-8 transition-shadow duration-500 hover:gold-glow luxury-border luxury-border-tl"
+            className="glass-card card-shimmer-sweep group relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 transition-shadow duration-500 hover:gold-glow luxury-border luxury-border-tl"
           >
-            <div className="mb-6 flex items-center justify-between">
-              <span className="drop-shadow-[0_4px_12px_rgba(255,200,100,0.25)] transition-transform duration-500 group-hover:scale-110">
-                {e.icon}
-              </span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.35em] text-royal/70 font-semibold select-none">
-                Day {i + 1}
-              </span>
+            <div>
+              <div className="mb-6 flex items-center justify-between">
+                <span className="drop-shadow-[0_4px_12px_rgba(255,200,100,0.25)] transition-transform duration-500 group-hover:scale-110">
+                  {e.icon}
+                </span>
+                <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.25em] text-royal font-bold select-none">
+                  Day {i + 1}
+                </span>
+              </div>
+
+              <h3 className="gold-gradient font-serif text-3xl sm:text-[2.35rem] font-medium tracking-wide leading-normal">
+                {e.title}
+              </h3>
+              <div className="gold-divider my-4 w-16" />
+              <p className="font-serif text-base sm:text-lg italic text-[#5f4b34] leading-relaxed">
+                {e.desc}
+              </p>
+
+              <dl className="mt-6 space-y-2.5 font-sans text-sm sm:text-base tracking-wide leading-7">
+                <div className="flex gap-2">
+                  <dt className="text-royal font-bold">{t.date}</dt>
+                  <dd className="text-foreground/95 font-medium">{e.date}</dd>
+                </div>
+                <div className="flex gap-2">
+                  <dt className="text-royal font-bold">{t.time}</dt>
+                  <dd className="text-foreground/95 font-medium">{e.time}</dd>
+                </div>
+                <div className="flex gap-2.5">
+                  <dt className="shrink-0 text-royal font-bold">{t.venueLabel}</dt>
+                  <dd className="text-foreground/95 font-medium leading-snug">{e.venue}</dd>
+                </div>
+              </dl>
+
+              {/* Event specific Live Countdown Timer */}
+              <EventTimer targetTime={e.targetTime} lang={lang} />
             </div>
 
-            <h3 className="gold-gradient font-serif text-3xl font-light tracking-wide">{e.title}</h3>
-            <div className="gold-divider my-4 w-16" />
-            <p className="font-serif text-sm italic text-muted-foreground/80 leading-relaxed">{e.desc}</p>
-
-            <dl className="mt-6 space-y-2.5 font-sans text-xs sm:text-sm tracking-wide">
-              <div className="flex gap-2">
-                <dt className="text-royal/85 font-semibold">Date</dt>
-                <dd className="text-foreground/90 font-light">{e.date}</dd>
-              </div>
-              <div className="flex gap-2">
-                <dt className="text-royal/85 font-semibold">Time</dt>
-                <dd className="text-foreground/90 font-light">{e.time}</dd>
-              </div>
-              <div className="flex gap-2.5">
-                <dt className="shrink-0 text-royal/85 font-semibold">Venue</dt>
-                <dd className="text-foreground/90 font-light leading-snug">{e.venue}</dd>
-              </div>
-            </dl>
-
             <a
-              href={mapsHref(e.venue)}
+              href={mapsHref(englishVenues[i])}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center justify-center rounded-full border border-royal/50 bg-royal/5 px-5 py-3 font-sans text-[10px] uppercase tracking-[0.35em] text-royal transition-all duration-500 hover:bg-royal hover:text-white hover:shadow-[0_10px_25px_rgba(110,22,32,0.15)] cursor-pointer relative overflow-hidden group/btn"
+              className="mt-8 inline-flex items-center justify-center rounded-full border border-royal/50 bg-royal/5 px-5 py-3 font-sans text-xs sm:text-sm uppercase tracking-[0.22em] text-royal transition-all duration-500 hover:bg-royal hover:text-white hover:shadow-[0_10px_25px_rgba(110,22,32,0.15)] cursor-pointer relative overflow-hidden group/btn"
             >
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover/btn:animate-shimmer" style={{ animationDuration: '1.2s' }} />
-              Get Directions →
+              <div
+                className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover/btn:animate-shimmer"
+                style={{ animationDuration: "1.2s" }}
+              />
+              {t.getDirections}
             </a>
           </motion.article>
         ))}

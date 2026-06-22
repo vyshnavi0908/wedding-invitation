@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute } from '@tanstack/react-router'
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Preloader } from "@/components/Preloader";
 import { Envelope } from "@/components/Envelope";
@@ -7,9 +7,6 @@ import { Hero } from "@/components/Hero";
 import { Couple } from "@/components/Couple";
 import { Schedule } from "@/components/Schedule";
 import { Venue } from "@/components/Venue";
-import { Gallery } from "@/components/Gallery";
-import { Story } from "@/components/Story";
-import { LiveWedding } from "@/components/LiveWedding";
 import { Countdown } from "@/components/Countdown";
 import { Footer } from "@/components/Footer";
 import { MusicToggle } from "@/components/MusicToggle";
@@ -21,13 +18,13 @@ import { WhatsAppToggle } from "@/components/WhatsAppToggle";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Vijay & Rashmika · 26.06.2026 · A Royal Wedding Invitation" },
+      { title: "Priya & Ravikanth · 02.07.2026 · Wedding Invitation" },
       {
         name: "description",
         content:
-          "Join Vijay Deverakonda & Rashmika Mandanna at Umaid Bhawan Palace, Jodhpur — a celebration written in the stars, sealed with love.",
+          "Join Priya & Ravikanth in Mandapeta for their wedding celebrations — a celebration written in the stars, sealed with love.",
       },
-      { property: "og:title", content: "Vijay & Rashmika · A Royal Wedding" },
+      { property: "og:title", content: "Priya & Ravikanth · A Wedding Invitation" },
       {
         property: "og:description",
         content: "A celebration written in the stars, sealed with love.",
@@ -49,17 +46,50 @@ function Index() {
   const [envelopeOpened, setEnvelopeOpened] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
   const [musicActive, setMusicActive] = useState(false);
+  const [lang, setLang] = useState<"en" | "te">("en");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("wedding_lang");
+    if (saved === "te") {
+      setLang("te");
+    }
+  }, []);
+
+  const handleLangToggle = () => {
+    const next = lang === "en" ? "te" : "en";
+    setLang(next);
+    localStorage.setItem("wedding_lang", next);
+  };
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.title =
+        lang === "en"
+          ? "Priya & Ravikanth · 02.07.2026 · Wedding Invitation"
+          : "ప్రియ & రవికాంత్ · 02.07.2026 · వివాహ ఆహ్వానం";
+    }
+  }, [lang]);
 
   return (
     <main className="relative bg-background min-h-screen text-foreground select-none overflow-x-hidden">
-      {/* Desktop Custom Spring Cursor Follower */}
+      {/* Desktop Custom Follower Cursor */}
       <CustomCursor />
 
       {/* 1. Global Floating Luxury Background */}
       <FloatingBackground />
 
+      {/* Floating Language Toggle Symmetrical to Menu (Only after envelope is opened) */}
+      {introComplete && (
+        <button
+          onClick={handleLangToggle}
+          className="fixed left-5 top-5 z-[90] flex h-14 px-5 items-center justify-center rounded-full border border-royal/30 bg-[#fdfbf7]/75 backdrop-blur-xl shadow-lg transition duration-500 hover:scale-105 font-sans text-sm sm:text-base uppercase tracking-[0.12em] text-royal font-semibold cursor-pointer"
+        >
+          {lang === "en" ? "తెలుగు" : "English"}
+        </button>
+      )}
+
       {/* 2 & 3. Orchestrated Luxury Exit & Entry Transitions */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {!introComplete && (
           <Envelope
             key="envelope-stage"
@@ -69,6 +99,7 @@ function Index() {
               setIntroComplete(true);
             }}
             onStartOpening={() => setMusicActive(true)}
+            lang="en"
           />
         )}
 
@@ -80,22 +111,19 @@ function Index() {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="relative z-10"
           >
-            <FloatingMenu />
-            <Hero />
-            <Couple />
-            <Schedule />
-            <Venue />
-            <Gallery />
-            <Story />
-            <LiveWedding />
-            <Countdown />
-            <Footer />
+            <FloatingMenu lang={lang} />
+            <Hero lang={lang} />
+            <Couple lang={lang} />
+            <Schedule lang={lang} />
+            <Venue lang={lang} />
+            <Countdown lang={lang} />
+            <Footer lang={lang} />
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Premium Symmetrical floating icons once the card starts opening */}
-      <WhatsAppToggle active={envelopeOpened} />
+      <WhatsAppToggle active={envelopeOpened} lang={lang} />
       <MusicToggle active={musicActive} />
     </main>
   );

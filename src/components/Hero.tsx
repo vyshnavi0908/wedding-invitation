@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { translations } from "@/lib/translations";
 
 const characterVariants = {
   hidden: { opacity: 0, y: 25, filter: "blur(5px)" },
@@ -6,13 +7,14 @@ const characterVariants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { type: "spring", damping: 14, stiffness: 80 }
-  }
+    transition: { type: "spring" as const, damping: 14, stiffness: 80 },
+  },
 };
 
 function RevealText({ text, delay = 0 }: { text: string; delay?: number }) {
-  const letters = Array.from(text);
-  
+  const isTelugu = /[\u0c00-\u0c7f]/.test(text);
+  const letters = isTelugu ? [text] : Array.from(text);
+
   return (
     <motion.span
       initial="hidden"
@@ -22,8 +24,8 @@ function RevealText({ text, delay = 0 }: { text: string; delay?: number }) {
           transition: {
             staggerChildren: 0.1,
             delayChildren: delay,
-          }
-        }
+          },
+        },
       }}
       className="inline-flex flex-wrap justify-center"
     >
@@ -31,7 +33,7 @@ function RevealText({ text, delay = 0 }: { text: string; delay?: number }) {
         <motion.span
           key={index}
           variants={characterVariants}
-          className="inline-block gold-shimmer font-cinzel transition-all duration-500 hover:scale-108 hover:text-gold-soft cursor-default"
+          className={`inline-block gold-shimmer transition-all duration-500 hover:scale-108 hover:text-[#be2e3a] cursor-default ${isTelugu ? "font-sans font-semibold" : "font-cinzel"}`}
           style={{ textShadow: "0 4px 20px oklch(0.82 0.14 85 / 0.15)" }}
         >
           {char === " " ? "\u00A0" : char}
@@ -41,9 +43,11 @@ function RevealText({ text, delay = 0 }: { text: string; delay?: number }) {
   );
 }
 
-export function Hero() {
+export function Hero({ lang = "en" }: { lang?: "en" | "te" }) {
+  const t = translations[lang];
+
   return (
-    <section 
+    <section
       id="home"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-20"
     >
@@ -61,11 +65,9 @@ export function Hero() {
           transition={{ duration: 1.5, delay: 0.2 }}
           className="mb-8 flex flex-col items-center"
         >
-          <span className="font-serif text-5xl text-royal sm:text-6xl animate-golden-glint">
-            ॐ
-          </span>
+          <span className="font-serif text-5xl text-royal sm:text-6xl animate-golden-glint">ॐ</span>
 
-          <p className="mt-3 font-serif text-xs italic tracking-[0.25em] text-royal/80 sm:text-sm">
+          <p className="mt-3 font-serif text-sm italic tracking-[0.2em] text-[#623821] sm:text-base">
             ॥ Om Gam Ganapataye Namah ॥
           </p>
 
@@ -77,35 +79,35 @@ export function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
-          className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.55em] text-royal/80 font-medium"
+          className="font-sans text-sm sm:text-base uppercase tracking-[0.35em] text-[#9d7931] font-bold"
         >
-          A Week of Wedding Celebrations
+          {t.weekOfCelebrations}
         </motion.p>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.8 }}
-          className="mt-2 font-sans text-xs uppercase tracking-[0.45em] text-royal/70 font-semibold"
+          className="mt-2 font-sans text-sm sm:text-base uppercase tracking-[0.3em] text-[#623821] font-bold"
         >
-          Save the Date · 26 . 06 . 2026
+          {t.saveTheDate} · 02 . 07 . 2026
         </motion.p>
 
         {/* Cinematic Typing & Reveal Couple Names */}
         <h1 className="mt-8 font-cinzel text-5xl font-light leading-[1.1] sm:text-7xl md:text-8xl flex flex-col items-center gap-2 sm:gap-4 select-none">
           <span className="block">
-            <RevealText text="Vijay" delay={1.1} />
+            <RevealText text={lang === "en" ? "Priya" : "ప్రియ"} delay={1.1} />
           </span>
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 1.7 }}
-            className="block font-script text-4xl text-gold-soft sm:text-5xl select-none"
+            className="block font-script text-4xl text-[#be2e3a] sm:text-5xl select-none"
           >
             &amp;
           </motion.span>
           <span className="block">
-            <RevealText text="Rashmika" delay={2.0} />
+            <RevealText text={lang === "en" ? "Ravikanth" : "రవికాంత్"} delay={2.0} />
           </span>
         </h1>
 
@@ -122,10 +124,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 3.3 }}
-          className="mx-auto max-w-lg font-serif text-base italic leading-relaxed text-muted-foreground/90 sm:text-lg"
+          className="mx-auto max-w-xl font-serif text-lg sm:text-2xl italic leading-8 text-[#5f4b34]"
         >
-          Together with their families, joyfully invite you to celebrate their union and the
-          beginning of their forever.
+          {t.invitationGreeting}
         </motion.p>
 
         {/* Star quote */}
@@ -133,9 +134,9 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.6, delay: 3.7 }}
-          className="mt-8 font-script text-3xl text-royal sm:text-4xl"
+          className="mt-8 font-script text-4xl text-[#623821] sm:text-5xl"
         >
-          “A celebration written in the stars, sealed with love.”
+          {t.starsQuote}
         </motion.p>
 
         {/* Elegant Scroll Down Indicator */}
@@ -145,8 +146,8 @@ export function Hero() {
           transition={{ duration: 1.5, delay: 4.2 }}
           className="mt-14 flex flex-col items-center gap-3"
         >
-          <span className="font-sans text-[9px] uppercase tracking-[0.5em] text-royal/60 font-semibold">
-            Scroll to Explore
+          <span className="font-sans text-xs uppercase tracking-[0.35em] text-[#9d7931] font-bold">
+            {t.scrollExplore}
           </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}

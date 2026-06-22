@@ -1,13 +1,17 @@
 import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 
-export function Story() {
+export function Story({ lang = "en" }: { lang?: "en" | "te" }) {
   return (
     <section id="story" className="relative px-6 py-16">
       <SectionTitle
-        eyebrow="Our Story"
-        title="A Special Glimpse"
-        subtitle="A cinematic moment from their journey together."
+        eyebrow={lang === "en" ? "Our Story" : "మా కథ"}
+        title={lang === "en" ? "A Special Glimpse" : "మధుర జ్ఞాపకాలు"}
+        subtitle={
+          lang === "en"
+            ? "A cinematic moment from their journey together."
+            : "వారి జీవిత ప్రయాణంలోని ఒక మధురమైన క్షణం."
+        }
       />
 
       <motion.div
