@@ -49,12 +49,12 @@ export function Footer({ lang = "en" }: { lang?: "en" | "te" }) {
         {/* Professional Designer Branding Footer */}
         <div className="mt-16 font-sans text-xs tracking-[0.2em] leading-relaxed text-[#6b4d38] sm:text-sm">
           <p>
-            © {new Date().getFullYear()} {lang === "en" ? "Sri Ram Studios" : "శ్రీ రామ్ స్టూడియోస్"} · {t.copyright}
+            © {new Date().getFullYear()} {lang === "en" ? "Sree Ram's Studio" : "శ్రీ రామ్స్ స్టూడియో"} · {t.copyright}
           </p>
           <p className="mt-2 text-royal/70">
             {t.brandingLine}{" "}
             <span className="font-semibold text-royal/90">
-              {lang === "en" ? "Sri Ram Studios" : "శ్రీ రామ్ స్టూడియోస్"}
+              {lang === "en" ? "Sree Ram's Studio" : "శ్రీ రామ్స్ స్టూడియో"}
             </span>
           </p>
           <p className="mt-1.5 text-royal/70">

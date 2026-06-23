@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { translations } from "@/lib/translations";
 import { createSeededRandom } from "@/lib/deterministic";
 
@@ -17,8 +17,19 @@ export function Envelope({
   const [opening, setOpening] = useState(false);
   const [topFlapBack, setTopFlapBack] = useState(false);
   const [cardRevealed, setCardRevealed] = useState(false);
+  const [cardOnTop, setCardOnTop] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const t = translations[lang];
   const random = createSeededRandom(126);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsSmallScreen(window.innerWidth < 640);
+    };
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   const handleOpen = () => {
     if (opening) return;
@@ -27,22 +38,27 @@ export function Envelope({
       onStartOpening();
     }
 
-    // Step 1: Wax seal fades out instantly (takes 0.3s)
+    // Step 1: Wax seal fades out slowly (takes 0.6s)
     
-    // Step 2: Top flap rotates up (starts at 0.2s, takes 0.9s)
+    // Step 2: Top flap rotates up (starts at 0.4s, takes 1.4s)
     setTimeout(() => {
       setTopFlapBack(true);
-    }, 650); // halfway through the rotation, switch zIndex behind the card
+    }, 1100); // halfway through rotation (0.4s + 0.7s), switch top flap zIndex behind the card
 
-    // Step 3: Inner Card slides up (starts at 0.95s, takes 1.3s)
+    // Step 3: Inner Card slides up (starts at 1.6s, takes 2.2s)
     setTimeout(() => {
       setCardRevealed(true);
-    }, 950);
+    }, 1600);
 
-    // Step 4: Trigger main page reveal (after 2.2s, right as card reaches its peak)
+    // Step 3b: Set card to top z-index halfway through the slide (at 2.7s) to clear envelope flaps
+    setTimeout(() => {
+      setCardOnTop(true);
+    }, 2700);
+
+    // Step 4: Trigger main page reveal after 6.0s (providing a majestic 2.2s pause at its peak)
     setTimeout(() => {
       onOpen();
-    }, 2200);
+    }, 6000);
   };
 
   return (
@@ -111,12 +127,17 @@ export function Envelope({
           initial={{ y: 0, scale: 0.95, opacity: 0 }}
           animate={
             cardRevealed
-              ? { y: -160, scale: 1.05, opacity: 1, zIndex: 15 }
+              ? { 
+                  y: isSmallScreen ? -200 : -270, 
+                  scale: 1.05, 
+                  opacity: 1, 
+                  zIndex: cardOnTop ? 35 : 15 
+                }
               : opening
-                ? { opacity: 0.8, scale: 0.98, y: 0 }
-                : { opacity: 0, scale: 0.95, y: 0 }
+                ? { opacity: 0.8, scale: 0.98, y: 0, zIndex: 5 }
+                : { opacity: 0, scale: 0.95, y: 0, zIndex: 5 }
           }
-          transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-4 rounded-xl border border-gold/45 p-4 sm:p-6 flex flex-col items-center justify-center text-center shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
           style={{
             background: "linear-gradient(135deg, #4A003E 0%, #630353 50%, #300028 100%)",
@@ -164,7 +185,7 @@ export function Envelope({
             zIndex: topFlapBack ? 10 : 25,
           }}
           animate={opening ? { rotateX: -180 } : { rotateX: 0 }}
-          transition={{ delay: 0.2, duration: 0.9, ease: "easeInOut" }}
+          transition={{ delay: 0.4, duration: 1.4, ease: "easeInOut" }}
         >
           {/* Outer Top Flap (visible when closed) */}
           <div

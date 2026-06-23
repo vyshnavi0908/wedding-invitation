@@ -307,8 +307,8 @@ const eventDates = [
   new Date("2026-07-01T12:15:00+05:30").getTime(), // Welcome
   new Date("2026-07-01T13:00:00+05:30").getTime(), // Lunch
   new Date("2026-07-01T16:00:00+05:30").getTime(), // Engagement
-  new Date("2026-07-03T01:51:00+05:30").getTime(), // Wedding
   new Date("2026-07-02T18:00:00+05:30").getTime(), // Reception
+  new Date("2026-07-03T01:51:00+05:30").getTime(), // Wedding
 ];
 
 function EventTimer({ targetTime, lang }: { targetTime: number; lang: "en" | "te" }) {
@@ -456,9 +456,9 @@ export function Schedule({ lang = "en" }: { lang?: "en" | "te" }) {
       ) : idx === 4 ? (
         <MehendiIcon />
       ) : idx === 5 ? (
-        <WeddingIcon />
-      ) : (
         <ReceptionIcon />
+      ) : (
+        <WeddingIcon />
       ),
     targetTime: eventDates[idx],
   }));
@@ -484,7 +484,7 @@ export function Schedule({ lang = "en" }: { lang?: "en" | "te" }) {
                   {e.icon}
                 </span>
                 <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.25em] text-royal font-bold select-none">
-                  Day {i + 1}
+                  {e.dayLabel}
                 </span>
               </div>
 

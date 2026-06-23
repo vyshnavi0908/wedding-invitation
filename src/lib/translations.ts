@@ -59,6 +59,7 @@ export const translations = {
 
     eventsData: [
       {
+        dayLabel: "Day 1",
         title: "Haldi Ceremony",
         desc: "A bright morning of turmeric, marigolds, blessings, and laughter.",
         date: "Sunday, June 28, 2026",
@@ -66,6 +67,7 @@ export const translations = {
         venue: "BABU & BABU, Mandapeta",
       },
       {
+        dayLabel: "Day 1",
         title: "Sangeet Night",
         desc: "An evening of music, dance, and joyful celebration.",
         date: "Sunday, June 28, 2026",
@@ -73,6 +75,7 @@ export const translations = {
         venue: "BABU & BABU, Mandapeta",
       },
       {
+        dayLabel: "Day 2",
         title: "Welcome Program",
         desc: "A warm welcome for family, friends, and every guest joining the day.",
         date: "Wednesday, July 1, 2026",
@@ -80,6 +83,7 @@ export const translations = {
         venue: "SRI KANYA GRAND Function Hall, Mandapeta",
       },
       {
+        dayLabel: "Day 2",
         title: "Afternoon Lunch",
         desc: "A traditional festive lunch served with love.",
         date: "Wednesday, July 1, 2026",
@@ -87,6 +91,7 @@ export const translations = {
         venue: "SRI KANYA GRAND Function Hall, Mandapeta",
       },
       {
+        dayLabel: "Day 2",
         title: "Engagement Ceremony",
         desc: "A special moment to celebrate the promise of tomorrow.",
         date: "Wednesday, July 1, 2026",
@@ -94,17 +99,19 @@ export const translations = {
         venue: "SRI KANYA GRAND Function Hall, Mandapeta",
       },
       {
-        title: "The Wedding (Sumuhurtham)",
-        desc: "The sacred wedding muhurtham as two lives become one.",
-        date: "Friday, July 3, 2026 (Early Hours)",
-        time: "01:51 AM (Early hours of Friday)",
-        venue: "Reddy Rambabu Residencies, Mandapeta",
-      },
-      {
+        dayLabel: "Day 3",
         title: "Reception & Dinner",
         desc: "An elegant evening to celebrate the newlyweds and new beginnings.",
         date: "Thursday, July 2, 2026",
         time: "6:00 PM onwards",
+        venue: "Reddy Rambabu Residencies, Mandapeta",
+      },
+      {
+        dayLabel: "Day 4 (Sumuhurtham)",
+        title: "The Wedding (Sumuhurtham)",
+        desc: "The sacred wedding muhurtham as two lives become one.",
+        date: "Friday, July 3, 2026 (Early Hours)",
+        time: "01:51 AM (Early hours of Friday)",
         venue: "Reddy Rambabu Residencies, Mandapeta",
       },
     ],
@@ -155,7 +162,7 @@ export const translations = {
     // Hero
     weekOfCelebrations: "కళ్యాణ సంబరాలు",
     invitationGreeting:
-      "శ్రీ కాళ్లకురి సూర్యనారాయణరావు, శ్రీమతి వీరవెంకట సత్యవతి దంపతుల దివ్య ఆశీస్సులతో, వేంకట సత్యప్రియ మరియు రవికాంత్ ల వివాహ మహోత్సవ శుభకార్యానికి బంధుమిత్రులను మరియు శ్రేయోభిలాషులను సాదరంగా ఆహ్వానిస్తున్నాము.",
+      "శ్రీ కాళ్ళకూరి సూర్యనారాయణరావు, శ్రీమతి వీరవెంకట సత్యవతి దంపతుల దివ్య ఆశీస్సులతో, వేంకట సత్యప్రియ మరియు రవికాంత్ ల వివాహ మహోత్సవ శుభకార్యానికి బంధుమిత్రులను మరియు శ్రేయోభిలాషులను సాదరంగా ఆహ్వానిస్తున్నాము.",
     starsQuote: "పెద్దల ఆశీస్సులతో, దైవ సాక్షిగా ముడిపడే ఈ పవిత్ర బంధానికి మీ ఉనికి శ్రీరామరక్ష.",
     scrollExplore: "ఆహ్వాన పత్రికను వీక్షించండి",
 
@@ -194,6 +201,7 @@ export const translations = {
 
     eventsData: [
       {
+        dayLabel: "రోజు 1",
         title: "మంగళస్నానం & హల్దీ వేడుక",
         desc: "పసుపు శోభతో, సాంప్రదాయ మంగళస్నానాలు మరియు బంధుమిత్రుల సందడితో జరిగే శుభోదయం.",
         date: "ఆదివారం, 28 జూన్, 2026",
@@ -201,6 +209,7 @@ export const translations = {
         venue: "బాబు & బాబు, మండపేట",
       },
       {
+        dayLabel: "రోజు 1",
         title: "సంగీత్ వేడుక",
         desc: "పాటలు, ఆటలు, మరియు నృత్యాలతో నిండిన సందడిగల సాయంత్రం.",
         date: "ఆదివారం, 28 జూన్, 2026",
@@ -208,6 +217,7 @@ export const translations = {
         venue: "బాబు & బాబు, మండపేట",
       },
       {
+        dayLabel: "రోజు 2",
         title: "వెల్కమ్ ప్రోగ్రామ్",
         desc: "కళ్యాణ వేడుకకు తరలివచ్చే బంధుమిత్రులకు సాదర స్వాగతం.",
         date: "బుధవారం, 1 జూలై, 2026",
@@ -215,6 +225,7 @@ export const translations = {
         venue: "శ్రీ కన్య గ్రాండ్ ఫంక్షన్ హాల్, మండపేట",
       },
       {
+        dayLabel: "రోజు 2",
         title: "మధ్యాహ్న వివాహ విందు",
         desc: "సాంప్రదాయ పద్ధతిలో వడ్డించే రుచికరమైన వివాహ విందు భోజనం.",
         date: "బుధవారం, 1 జూలై, 2026",
@@ -222,6 +233,7 @@ export const translations = {
         venue: "శ్రీ కన్య గ్రాండ్ ఫంక్షన్ హాల్, మండపేట",
       },
       {
+        dayLabel: "రోజు 2",
         title: "తాంబూలాల ప్రదానం & నిశ్చితార్థం",
         desc: "నూతన జీవితానికి వేసే పవిత్రమైన పునాది క్షణం.",
         date: "బుధవారం, 1 జూలై, 2026",
@@ -229,17 +241,19 @@ export const translations = {
         venue: "శ్రీ కన్య గ్రాండ్ ఫంక్షన్ హాల్, మండపేట",
       },
       {
-        title: "శుభ వివాహ మహోత్సవం (సుముహూర్తం)",
-        desc: "రెండు జీవితాలు ఒక్కటయ్యే పవిత్రమైన సుముహూర్త క్షణం.",
-        date: "గురువారం, 2 జూలై, 2026 (తెల్లవారితే శుక్రవారం)",
-        time: "రాత్రి 01:51 గంటలకు (సుముహూర్తం)",
-        venue: "రెడ్డి రాంబాబు రెసిడెన్సీస్, మండపేట",
-      },
-      {
+        dayLabel: "రోజు 3",
         title: "రిసెప్షన్ & విందు",
         desc: "నూతన దంపతులను ఆశీర్వదించే శుభ సాయంత్రం మరియు విందు.",
         date: "గురువారం, 2 జూలై, 2026",
         time: "సాయంత్రం 6:00 గంటల నుండి",
+        venue: "రెడ్డి రాంబాబు రెసిడెన్సీస్, మండపేట",
+      },
+      {
+        dayLabel: "రోజు 4 (సుముహూర్తం)",
+        title: "శుభ వివాహ మహోత్సవం (సుముహూర్తం)",
+        desc: "రెండు జీవితాలు ఒక్కటయ్యే పవిత్రమైన సుముహూర్త క్షణం.",
+        date: "గురువారం, 2 జూలై, 2026 (తెల్లవారితే శుక్రవారం)",
+        time: "రాత్రి 01:51 గంటలకు (సుముహూర్తం)",
         venue: "రెడ్డి రాంబాబు రెసిడెన్సీస్, మండపేట",
       },
     ],
@@ -263,7 +277,7 @@ export const translations = {
     seekingBlessings: "మీ ఆశీస్సులు ఆకాంక్షిస్తూ...",
     seekingBlessingsText:
       "మా నూతన జీవిత సుఖసంతోషాలకై మీ పవిత్రమైన ప్రేమ, ప్రార్థనలు మరియు ఆశీస్సులు ఎల్లవేళలా ఉండాలని కోరుకుంటున్నాము.",
-    withLoveSignature: "ఆహ్వానించువారు: శ్రీ కాళ్లకురి గొల్లబాబు, శ్రీమతి ఫణి భాను జయశ్రీ & కుటుంబ సభ్యులు",
+    withLoveSignature: "ఆహ్వానించువారు: శ్రీ కాళ్ళకూరి గొల్లబాబు, శ్రీమతి ఫణి భాను జయశ్రీ & కుటుంబ సభ్యులు",
     copyright: "సర్వ హక్కులు భద్రపరచబడినవి",
     brandingLine: "డిజైన్ & డిజిటల్ క్యూరేషన్:",
     contactInfo: "సంప్రదించాల్సిన నంబర్:",

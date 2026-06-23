@@ -66,7 +66,7 @@ export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
                     {t.parents}
                   </p>
                   <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
-                    {lang === "en" ? "D/o Sri Kallakuri Gollababu" : "శ్రీ కాళ్లకురి గొల్లబాబు"}
+                    {lang === "en" ? "D/o Sri Kallakuri Gollababu" : "శ్రీ కాళ్ళకూరి గొల్లబాబు"}
                   </p>
                   <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
                     {lang === "en"
@@ -82,7 +82,7 @@ export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
                   <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
                     {lang === "en"
                       ? "Late Sri. Kallakuri Suryanarayana Rao"
-                      : "దివంగత శ్రీ కాళ్లకురి సూర్యనారాయణ రావు"}
+                      : "దివంగత శ్రీ కాళ్ళకూరి సూర్యనారాయణ రావు"}
                   </p>
                   <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
                     {lang === "en"

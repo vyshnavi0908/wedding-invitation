@@ -84,14 +84,16 @@ export function Hero({ lang = "en" }: { lang?: "en" | "te" }) {
           {t.weekOfCelebrations}
         </motion.p>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.8 }}
-          className="mt-2 font-sans text-sm sm:text-base uppercase tracking-[0.3em] text-[#623821] font-bold"
+          className="mt-2 font-sans text-sm sm:text-base uppercase tracking-[0.15em] sm:tracking-[0.3em] text-[#623821] font-bold flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3"
         >
-          {t.saveTheDate} · 02 . 07 . 2026
-        </motion.p>
+          <span>{t.saveTheDate}</span>
+          <span className="hidden sm:inline">·</span>
+          <span className="text-[#be2e3a] font-serif tracking-normal sm:tracking-[0.3em] whitespace-nowrap">02.07.2026</span>
+        </motion.div>
 
         {/* Cinematic Typing & Reveal Couple Names */}
         <h1 className="mt-8 font-cinzel text-5xl font-light leading-[1.1] sm:text-7xl md:text-8xl flex flex-col items-center gap-2 sm:gap-4 select-none">
