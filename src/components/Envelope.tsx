@@ -87,38 +87,42 @@ export function Envelope({
                 : { scale: 1.02, opacity: 1, y: 0 }
             }
             transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
-            className="absolute z-10 w-[88%] min-[360px]:w-[84%] sm:w-[460px] h-[340px] min-[360px]:h-[380px] sm:h-[500px] rounded-2xl border border-gold/45 p-6 flex flex-col items-center justify-center text-center shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+            className="absolute z-10 w-[88%] min-[360px]:w-[84%] sm:w-[460px] h-[340px] min-[360px]:h-[380px] sm:h-[500px] rounded-2xl border-2 border-[#d4a02a]/60 p-6 flex flex-col items-center justify-center text-center shadow-[0_30px_90px_rgba(74,14,20,0.15)]"
             style={{
-              background: "linear-gradient(135deg, #3d002e 0%, #58034a 50%, #22001a 100%)",
-              boxShadow: "inset 0 0 50px rgba(0,0,0,0.7), 0 0 30px rgba(197, 155, 39, 0.25)",
+              backgroundColor: "#faf8f2",
+              backgroundImage: `
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.6) 0%, rgba(246, 243, 232, 0.3) 100%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 C60 0, 80 20, 80 40 C80 60, 60 80, 40 80 C20 80, 0 60, 0 40 C0 20, 20 0, 40 0 Z' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/path%3E%3C/svg%3E")
+              `,
+              boxShadow: "inset 0 0 40px rgba(197, 155, 39, 0.1), 0 15px 50px rgba(74, 14, 20, 0.15)",
             }}
           >
             {/* Card Corner Borders */}
-            <div className="absolute inset-3 border border-[#f5d27a]/20 pointer-events-none rounded-lg" />
-            <div className="absolute top-4.5 left-4.5 w-8 h-8 border-t-2 border-l-2 border-[#f5d27a]/50 rounded-tl" />
-            <div className="absolute top-4.5 right-4.5 w-8 h-8 border-t-2 border-r-2 border-[#f5d27a]/50 rounded-tr" />
-            <div className="absolute bottom-4.5 left-4.5 w-8 h-8 border-b-2 border-l-2 border-[#f5d27a]/50 rounded-bl" />
-            <div className="absolute bottom-4.5 right-4.5 w-8 h-8 border-b-2 border-r-2 border-[#f5d27a]/50 rounded-br" />
+            <div className="absolute inset-3 border border-[#c59b27]/25 pointer-events-none rounded-lg" />
+            <div className="absolute top-4.5 left-4.5 w-8 h-8 border-t-2 border-l-2 border-[#c59b27]/60 rounded-tl" />
+            <div className="absolute top-4.5 right-4.5 w-8 h-8 border-t-2 border-r-2 border-[#c59b27]/60 rounded-tr" />
+            <div className="absolute bottom-4.5 left-4.5 w-8 h-8 border-b-2 border-l-2 border-[#c59b27]/60 rounded-bl" />
+            <div className="absolute bottom-4.5 right-4.5 w-8 h-8 border-b-2 border-r-2 border-[#c59b27]/60 rounded-br" />
 
-            {/* Shimmering Gold Cursive Text "Kallakuri's" */}
+            {/* Shimmering Crimson Cursive Text "Kallakuri's" */}
             <h1
-              className="font-script text-5xl sm:text-7xl font-normal leading-none tracking-wide select-none mb-4 animate-pulse-gold"
+              className="font-script text-5xl sm:text-7xl font-normal leading-none tracking-wide select-none mb-4"
               style={{
-                background: "linear-gradient(to right, #ffe893 0%, #f5d27a 30%, #d4a02a 70%, #ffe893 100%)",
+                background: "linear-gradient(to right, #800d1a 0%, #be2e3a 50%, #800d1a 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.5))",
+                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
               }}
             >
               Kallakuri's
             </h1>
 
-            {/* Elegant gold "Wedding Invitation" */}
+            {/* Elegant deep crimson-brown "Wedding Invitation" */}
             <p
               className="font-cinzel text-sm sm:text-xl uppercase tracking-[0.3em] font-semibold select-none"
               style={{
-                color: "#f5d27a",
-                textShadow: "0 2px 6px rgba(0,0,0,0.6)",
+                color: "#6b4021",
+                textShadow: "0 1px 2px rgba(0,0,0,0.1)",
               }}
             >
               Wedding Invitation
