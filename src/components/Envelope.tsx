@@ -76,7 +76,7 @@ export function Envelope({
         ))}
       </div>
 
-      {/* 1. Center Revealed Invitation Card */}
+      {/* 1. Center Revealed Invitation Card (Keeping original deep premium purple/magenta gradient) */}
       <AnimatePresence>
         {cardRevealed && (
           <motion.div
@@ -87,42 +87,38 @@ export function Envelope({
                 : { scale: 1.02, opacity: 1, y: 0 }
             }
             transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
-            className="absolute z-10 w-[88%] min-[360px]:w-[84%] sm:w-[460px] h-[340px] min-[360px]:h-[380px] sm:h-[500px] rounded-2xl border-2 border-[#d4a02a]/60 p-6 flex flex-col items-center justify-center text-center shadow-[0_30px_90px_rgba(74,14,20,0.15)]"
+            className="absolute z-10 w-[88%] min-[360px]:w-[84%] sm:w-[460px] h-[340px] min-[360px]:h-[380px] sm:h-[500px] rounded-2xl border border-gold/45 p-6 flex flex-col items-center justify-center text-center shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
             style={{
-              backgroundColor: "#faf8f2",
-              backgroundImage: `
-                radial-gradient(circle at center, rgba(255, 255, 255, 0.6) 0%, rgba(246, 243, 232, 0.3) 100%),
-                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 C60 0, 80 20, 80 40 C80 60, 60 80, 40 80 C20 80, 0 60, 0 40 C0 20, 20 0, 40 0 Z' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/path%3E%3C/svg%3E")
-              `,
-              boxShadow: "inset 0 0 40px rgba(197, 155, 39, 0.1), 0 15px 50px rgba(74, 14, 20, 0.15)",
+              background: "linear-gradient(135deg, #3D002E 0%, #630353 50%, #300028 100%)",
+              boxShadow: "inset 0 0 40px rgba(0,0,0,0.6), 0 0 20px rgba(197, 155, 39, 0.3)",
             }}
           >
             {/* Card Corner Borders */}
-            <div className="absolute inset-3 border border-[#c59b27]/25 pointer-events-none rounded-lg" />
-            <div className="absolute top-4.5 left-4.5 w-8 h-8 border-t-2 border-l-2 border-[#c59b27]/60 rounded-tl" />
-            <div className="absolute top-4.5 right-4.5 w-8 h-8 border-t-2 border-r-2 border-[#c59b27]/60 rounded-tr" />
-            <div className="absolute bottom-4.5 left-4.5 w-8 h-8 border-b-2 border-l-2 border-[#c59b27]/60 rounded-bl" />
-            <div className="absolute bottom-4.5 right-4.5 w-8 h-8 border-b-2 border-r-2 border-[#c59b27]/60 rounded-br" />
+            <div className="absolute inset-3 border border-[#f5d27a]/20 pointer-events-none rounded-lg" />
+            <div className="absolute top-4.5 left-4.5 w-8 h-8 border-t-2 border-l-2 border-[#f5d27a]/50 rounded-tl" />
+            <div className="absolute top-4.5 right-4.5 w-8 h-8 border-t-2 border-r-2 border-[#f5d27a]/50 rounded-tr" />
+            <div className="absolute bottom-4.5 left-4.5 w-8 h-8 border-b-2 border-l-2 border-[#f5d27a]/50 rounded-bl" />
+            <div className="absolute bottom-4.5 right-4.5 w-8 h-8 border-b-2 border-r-2 border-[#f5d27a]/50 rounded-br" />
 
-            {/* Shimmering Crimson Cursive Text "Kallakuri's" */}
+            {/* Shimmering Gold Cursive Text "Kallakuri's" */}
             <h1
-              className="font-script text-5xl sm:text-7xl font-normal leading-none tracking-wide select-none mb-4"
+              className="font-script text-5xl sm:text-7xl font-normal leading-none tracking-wide select-none mb-4 animate-pulse-gold"
               style={{
-                background: "linear-gradient(to right, #800d1a 0%, #be2e3a 50%, #800d1a 100%)",
+                background: "linear-gradient(to right, #ffe893 0%, #f5d27a 30%, #d4a02a 70%, #ffe893 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.12))",
+                filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.5))",
               }}
             >
               Kallakuri's
             </h1>
 
-            {/* Elegant deep crimson-brown "Wedding Invitation" */}
+            {/* Elegant gold "Wedding Invitation" */}
             <p
               className="font-cinzel text-sm sm:text-xl uppercase tracking-[0.3em] font-semibold select-none"
               style={{
-                color: "#6b4021",
-                textShadow: "0 1px 2px rgba(0,0,0,0.1)",
+                color: "#f5d27a",
+                textShadow: "0 2px 6px rgba(0,0,0,0.6)",
               }}
             >
               Wedding Invitation
@@ -131,41 +127,49 @@ export function Envelope({
         )}
       </AnimatePresence>
 
-      {/* 2. Left Curtain Panel */}
+      {/* 2. Left Curtain Panel (Styled to match Home ivory/cream background theme) */}
       <motion.div
-        className="absolute left-0 top-0 bottom-0 w-1/2 z-20 flex items-center justify-end overflow-hidden border-r border-[#ffe893]/25 shadow-[10px_0_30px_rgba(0,0,0,0.4)]"
+        className="absolute left-0 top-0 bottom-0 w-1/2 z-20 flex items-center justify-end overflow-hidden border-r-2 border-[#d4a02a]/60 shadow-[10px_0_30px_rgba(0,0,0,0.15)]"
         style={{
-          background: "linear-gradient(135deg, #1f0113 0%, #2f021e 50%, #15000c 100%)",
+          backgroundColor: "#faf8f2",
+          backgroundImage: `
+            radial-gradient(circle at right center, rgba(255, 255, 255, 0.6) 0%, rgba(246, 243, 232, 0.3) 100%),
+            url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 C60 0, 80 20, 80 40 C80 60, 60 80, 40 80 C20 80, 0 60, 0 40 C0 20, 20 0, 40 0 Z' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/path%3E%3C/svg%3E")
+          `,
         }}
         animate={curtainsOpen ? { x: "-100%" } : { x: 0 }}
         transition={{ duration: 1.4, ease: [0.25, 1, 0.5, 1] }}
       >
         {/* Left Curtain Corner Gold Filigrees */}
-        <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-[#ffe893]/20 rounded-tl-xl pointer-events-none" />
-        <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-[#ffe893]/20 rounded-bl-xl pointer-events-none" />
+        <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-[#c59b27]/40 rounded-tl-xl pointer-events-none" />
+        <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-[#c59b27]/40 rounded-bl-xl pointer-events-none" />
         
         {/* Left Half Decorative Motif */}
-        <div className="mr-4 flex flex-col items-center opacity-30 select-none">
-          <span className="font-serif text-6xl text-[#ffe893]">✦</span>
+        <div className="mr-6 flex flex-col items-center opacity-40 select-none">
+          <span className="font-serif text-6xl text-[#c59b27]">✦</span>
         </div>
       </motion.div>
 
-      {/* 3. Right Curtain Panel */}
+      {/* 3. Right Curtain Panel (Styled to match Home ivory/cream background theme) */}
       <motion.div
-        className="absolute right-0 top-0 bottom-0 w-1/2 z-20 flex items-center justify-start overflow-hidden border-l border-[#ffe893]/25 shadow-[-10px_0_30px_rgba(0,0,0,0.4)]"
+        className="absolute right-0 top-0 bottom-0 w-1/2 z-20 flex items-center justify-start overflow-hidden border-l-2 border-[#d4a02a]/60 shadow-[-10px_0_30px_rgba(0,0,0,0.15)]"
         style={{
-          background: "linear-gradient(135deg, #1f0113 0%, #2f021e 50%, #15000c 100%)",
+          backgroundColor: "#faf8f2",
+          backgroundImage: `
+            radial-gradient(circle at left center, rgba(255, 255, 255, 0.6) 0%, rgba(246, 243, 232, 0.3) 100%),
+            url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 C60 0, 80 20, 80 40 C80 60, 60 80, 40 80 C20 80, 0 60, 0 40 C0 20, 20 0, 40 0 Z' stroke='%23c59b27' stroke-width='0.25' fill='none' opacity='0.08'%3E%3C/path%3E%3C/svg%3E")
+          `,
         }}
         animate={curtainsOpen ? { x: "100%" } : { x: 0 }}
         transition={{ duration: 1.4, ease: [0.25, 1, 0.5, 1] }}
       >
         {/* Right Curtain Corner Gold Filigrees */}
-        <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-[#ffe893]/20 rounded-tr-xl pointer-events-none" />
-        <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-[#ffe893]/20 rounded-br-xl pointer-events-none" />
+        <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-[#c59b27]/40 rounded-tr-xl pointer-events-none" />
+        <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-[#c59b27]/40 rounded-br-xl pointer-events-none" />
 
         {/* Right Half Decorative Motif */}
-        <div className="ml-4 flex flex-col items-center opacity-30 select-none">
-          <span className="font-serif text-6xl text-[#ffe893]">✦</span>
+        <div className="ml-6 flex flex-col items-center opacity-40 select-none">
+          <span className="font-serif text-6xl text-[#c59b27]">✦</span>
         </div>
       </motion.div>
 
