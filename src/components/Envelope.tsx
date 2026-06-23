@@ -189,7 +189,7 @@ export function Envelope({
               className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold/30 rounded-full"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.94 }}
-              aria-label={lang === "en" ? "Open invitation" : "ఆహ్వానాన్ని తెరవండి"}
+              aria-label="Open invitation"
             >
               <div
                 className="relative flex h-24 w-24 items-center justify-center rounded-full sm:h-28 sm:w-28 shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
@@ -217,7 +217,7 @@ export function Envelope({
               transition={{ duration: 2.0, repeat: Infinity }}
               className="mt-6 font-sans text-xs sm:text-sm uppercase tracking-[0.25em] text-[#ffe893] font-semibold"
             >
-              {lang === "en" ? "Tap to open" : "తెరవడానికి క్లిక్ చేయండి"}
+              Tap to open
             </motion.p>
           </motion.div>
         )}

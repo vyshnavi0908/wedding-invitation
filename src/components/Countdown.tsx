@@ -53,7 +53,7 @@ export function Countdown({ lang = "en" }: { lang?: "en" | "te" }) {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#fdf9ee]/70 via-transparent to-[#efe7cc]/60 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-            <div className="relative h-12 min-[360px]:h-16 min-[400px]:h-20 sm:h-28 md:h-32 flex items-center justify-center overflow-hidden w-full">
+            <div className="relative h-16 min-[360px]:h-20 min-[400px]:h-24 sm:h-28 md:h-32 flex items-center justify-center overflow-hidden w-full">
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={val}

@@ -122,7 +122,7 @@ export const translations = {
 
     // Countdown
     untilWeSayForever: "Until We Say Forever",
-    countdownSubtitle: "2 July 2026 · Reddy Rambabu Residencies, Mandapeta",
+    countdownSubtitle: "3 July 2026 (Early Hours) · Reddy Rambabu Residencies, Mandapeta",
     daysLabel: "Days",
     hoursLabel: "Hours",
     minutesLabel: "Minutes",
@@ -264,7 +264,7 @@ export const translations = {
 
     // Countdown
     untilWeSayForever: "వివాహ మహోత్సవ శుభ ముహూర్తం",
-    countdownSubtitle: "తేదీ: 2 జూలై 2026 · వేదిక: రెడ్డి రాంబాబు రెసిడెన్సీస్, మండపేట",
+    countdownSubtitle: "తేదీ: 3 జూలై 2026 (గురువారం తెల్లవారితే శుక్రవారం) · వేదిక: రెడ్డి రాంబాబు రెసిడెన్సీస్, మండపేట",
     daysLabel: "రోజులు",
     hoursLabel: "గంటలు",
     minutesLabel: "నిమిషాలు",

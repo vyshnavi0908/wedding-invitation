@@ -347,7 +347,7 @@ function EventTimer({ targetTime, lang }: { targetTime: number; lang: "en" | "te
           ].map(([value, unit]) => (
             <div key={unit} className="rounded-2xl border border-emerald-500/15 bg-white/75 px-0.5 py-2.5 min-[360px]:px-1 sm:px-2 sm:py-3">
               <div className="font-serif text-xl sm:text-2xl font-semibold leading-none text-emerald-800">{value}</div>
-              <div className="mt-1 font-sans text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-emerald-700 font-semibold">
+              <div className="mt-1 font-sans text-[11px] min-[360px]:text-[12px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-emerald-700 font-semibold">
                 {unit}
               </div>
             </div>
@@ -377,7 +377,7 @@ function EventTimer({ targetTime, lang }: { targetTime: number; lang: "en" | "te
           ].map(([value, unit]) => (
             <div key={unit} className="rounded-2xl border border-amber-500/15 bg-white/75 px-0.5 py-2.5 min-[360px]:px-1 sm:px-2 sm:py-3">
               <div className="font-serif text-xl sm:text-2xl font-semibold leading-none text-amber-900">{value}</div>
-              <div className="mt-1 font-sans text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-amber-800 font-semibold">
+              <div className="mt-1 font-sans text-[11px] min-[360px]:text-[12px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-amber-800 font-semibold">
                 {unit}
               </div>
             </div>
@@ -416,7 +416,7 @@ function EventTimer({ targetTime, lang }: { targetTime: number; lang: "en" | "te
             <div className="font-serif text-2xl sm:text-3xl font-semibold leading-none text-foreground">
               {value}
             </div>
-            <div className="mt-1.5 font-sans text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-[#9d7931] font-bold">
+            <div className="mt-1.5 font-sans text-[11px] min-[360px]:text-[12px] sm:text-xs uppercase tracking-[0.06em] min-[360px]:tracking-[0.12em] text-[#9d7931] font-bold">
               {unit}
             </div>
           </div>
