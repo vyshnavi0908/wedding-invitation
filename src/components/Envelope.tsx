@@ -117,39 +117,41 @@ export function Envelope({
                 : { opacity: 0, scale: 0.95, y: 0 }
           }
           transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-4 rounded-xl border border-gold/45 p-4 sm:p-6 flex flex-col items-center justify-center text-center shadow-[0_12px_28px_rgba(0,0,0,0.08)] bg-[#fdfdfb]"
+          className="absolute inset-4 rounded-xl border border-gold/45 p-4 sm:p-6 flex flex-col items-center justify-center text-center shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
           style={{
-            backgroundImage: `
-              radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(250, 245, 225, 0.92) 100%),
-              url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E")
-            `,
-            boxShadow: "inset 0 0 24px rgba(157, 121, 49, 0.08)",
+            background: "linear-gradient(135deg, #4A003E 0%, #630353 50%, #300028 100%)",
+            boxShadow: "inset 0 0 40px rgba(0,0,0,0.6), 0 0 20px rgba(197, 155, 39, 0.3)",
           }}
         >
           {/* Card Corner Borders */}
-          <div className="absolute inset-2.5 border border-[#9d7931]/25 pointer-events-none rounded-lg" />
-          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-[#9d7931]/60 rounded-tl" />
-          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#9d7931]/60 rounded-tr" />
-          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-[#9d7931]/60 rounded-bl" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-[#9d7931]/60 rounded-br" />
+          <div className="absolute inset-2.5 border border-[#f5d27a]/25 pointer-events-none rounded-lg" />
+          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-[#f5d27a]/60 rounded-tl" />
+          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#f5d27a]/60 rounded-tr" />
+          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-[#f5d27a]/60 rounded-bl" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-[#f5d27a]/60 rounded-br" />
 
-          <span className="font-serif text-2xl sm:text-4xl text-royal mb-1 sm:mb-2 animate-golden-glint">ॐ</span>
-          <p className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.28em] text-[#9d7931] font-bold">
-            {t.saveTheDate}
-          </p>
-          <div className="w-12 my-1.5 sm:my-2.5" style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(157,121,49,.5), transparent)" }} />
-          <h2 className="font-cinzel text-xl sm:text-3xl text-royal font-bold leading-normal">
-            {lang === "en" ? "Priya" : "ప్రియ"} <br />
-            <span className="font-script text-xl sm:text-2xl text-[#9d7931] my-0 sm:my-0.5 block">&amp;</span>
-            {lang === "en" ? "Ravikanth" : "రవికాంత్"}
-          </h2>
-          <div className="w-12 my-1.5 sm:my-2.5" style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(157,121,49,.5), transparent)" }} />
-          <p className="font-serif text-xs sm:text-base italic text-[#6b4021] font-semibold">02 . 07 . 2026</p>
-          <p className="font-sans text-[9px] sm:text-xs uppercase tracking-[0.22em] text-[#9d7931] mt-1.5 sm:mt-2 font-bold">
-            {lang === "en" ? "Reddy Rambabu Residencies" : "రెడ్డి రాంబాబు రెసిడెన్సీస్"}
-          </p>
-          <p className="font-serif text-[10px] sm:text-sm italic text-[#5b402b] mt-0.5 font-bold">
-            {lang === "en" ? "Alamuru Road, Mandapeta" : "ఆలమూరు రోడ్, మండపేట"}
+          {/* Large, shimmering gold cursive text "Kallakuri's" */}
+          <h1 
+            className="font-script text-5xl sm:text-7xl font-normal leading-none tracking-wide select-none mb-3"
+            style={{
+              background: "linear-gradient(to right, #ffe893 0%, #f5d27a 30%, #d4a02a 70%, #ffe893 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.4))",
+            }}
+          >
+            Kallakuri's
+          </h1>
+
+          {/* Elegant gold "Wedding Invitation" */}
+          <p 
+            className="font-cinzel text-sm sm:text-xl uppercase tracking-[0.25em] font-medium select-none"
+            style={{
+              color: "#f5d27a",
+              textShadow: "0 2px 4px rgba(0,0,0,0.5)",
+            }}
+          >
+            Wedding Invitation
           </p>
         </motion.div>
 

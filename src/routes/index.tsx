@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Inter:wght@300;400;500&family=Noto+Serif+Telugu:wght@400;500;600;700&family=Ramaraja&display=swap",
       },
     ],
   }),
@@ -71,7 +71,7 @@ function Index() {
   }, [lang]);
 
   return (
-    <main className="relative bg-background min-h-screen text-foreground select-none overflow-x-hidden">
+    <main lang={lang} className="relative bg-background min-h-screen text-foreground select-none overflow-x-hidden">
       {/* Desktop Custom Follower Cursor */}
       <CustomCursor />
 

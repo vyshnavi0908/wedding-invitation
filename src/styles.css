@@ -393,3 +393,153 @@
   border-left: 0;
   border-top: 0;
 }
+
+/* ==========================================
+   Legibility & Accessibility Improvements
+   (Enlarged Text, High Contrast, Responsive)
+   ========================================== */
+
+/* Bolder weight for light/thin serif fonts */
+body,
+.font-serif {
+  font-weight: 500 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Magnify and make all tailwind font size classes responsive (clamp) */
+.text-xs {
+  font-size: clamp(0.95rem, 2vw, 1.1rem) !important;
+  line-height: 1.55 !important;
+}
+
+.text-sm {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem) !important;
+  line-height: 1.6 !important;
+}
+
+.text-base {
+  font-size: clamp(1.25rem, 3vw, 1.4rem) !important;
+  line-height: 1.65 !important;
+}
+
+.text-lg {
+  font-size: clamp(1.4rem, 3.5vw, 1.55rem) !important;
+  line-height: 1.7 !important;
+}
+
+.text-xl {
+  font-size: clamp(1.55rem, 4vw, 1.75rem) !important;
+  line-height: 1.7 !important;
+}
+
+.text-2xl {
+  font-size: clamp(1.8rem, 4.5vw, 2.05rem) !important;
+  line-height: 1.6 !important;
+}
+
+.text-3xl {
+  font-size: clamp(2.1rem, 5.5vw, 2.5rem) !important;
+  line-height: 1.5 !important;
+}
+
+.text-4xl {
+  font-size: clamp(2.4rem, 6.5vw, 2.9rem) !important;
+  line-height: 1.4 !important;
+}
+
+.text-5xl {
+  font-size: clamp(2.8rem, 7.5vw, 3.4rem) !important;
+  line-height: 1.35 !important;
+}
+
+.text-6xl {
+  font-size: clamp(3.2rem, 8.5vw, 4rem) !important;
+  line-height: 1.3 !important;
+}
+
+.text-7xl {
+  font-size: clamp(3.6rem, 9.5vw, 4.6rem) !important;
+  line-height: 1.25 !important;
+}
+
+.text-8xl {
+  font-size: clamp(4rem, 11vw, 5.5rem) !important;
+  line-height: 1.2 !important;
+}
+
+/* High Contrast overrides for faint hardcoded font colors */
+.text-\[\#5f4b34\] {
+  color: oklch(0.24 0.04 35) !important; /* Rich deep espresso/chocolate brown instead of faint brown */
+}
+
+.text-\[\#9d7931\] {
+  color: oklch(0.38 0.08 72) !important; /* Deep warm bronze-gold instead of faint light gold */
+  font-weight: 700 !important;
+}
+
+.text-\[\#623821\] {
+  color: oklch(0.18 0.04 25) !important; /* Very dark roasted coffee brown for strong contrast */
+}
+
+.text-\[\#6b4021\] {
+  color: oklch(0.22 0.05 30) !important; /* Rich deep crimson-brown */
+  font-weight: 600 !important;
+}
+
+.text-\[\#5b402b\] {
+  color: oklch(0.20 0.04 30) !important; /* Deep dark cocoa brown */
+}
+
+.text-\[\#6b553c\] {
+  color: oklch(0.25 0.04 35) !important; /* Rich earth brown */
+}
+
+.text-\[\#62542a\] {
+  color: oklch(0.26 0.05 60) !important; /* Deep forest bronze */
+}
+
+/* Global Mobile Responsiveness Optimizations */
+
+/* Fluid section padding: smaller on mobile, generous on desktop */
+section {
+  padding-left: clamp(1rem, 4vw, 2.5rem) !important;
+  padding-right: clamp(1rem, 4vw, 2.5rem) !important;
+  padding-top: clamp(3rem, 7vw, 5.5rem) !important;
+  padding-bottom: clamp(3rem, 7vw, 5.5rem) !important;
+}
+
+/* Adaptive glass-card padding to maximize read area on mobile */
+.glass-card {
+  padding-left: clamp(1rem, 3.5vw, 2rem) !important;
+  padding-right: clamp(1rem, 3.5vw, 2rem) !important;
+  padding-top: clamp(1.25rem, 4.5vw, 2.5rem) !important;
+  padding-bottom: clamp(1.25rem, 4.5vw, 2.5rem) !important;
+}
+
+/* Prevent overflow and clipping of cards and layout blocks */
+.grid {
+  gap: clamp(1rem, 3vw, 2rem) !important;
+}
+
+/* Traditional Professional Telugu fonts when language is set to Telugu */
+main[lang="te"],
+main[lang="te"] body,
+main[lang="te"] .font-serif,
+main[lang="te"] h1,
+main[lang="te"] h2,
+main[lang="te"] h3,
+main[lang="te"] h4,
+main[lang="te"] p,
+main[lang="te"] span,
+main[lang="te"] button,
+main[lang="te"] a {
+  font-family: 'Ramaraja', 'Noto Serif Telugu', 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+}
+
+/* Map cursive script fonts in Telugu mode to the elegant Ramaraja calligraphic font */
+main[lang="te"] .font-script {
+  font-family: 'Ramaraja', cursive !important;
+}
+
+

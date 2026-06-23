@@ -50,7 +50,7 @@ export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
                 {t.theBride}
               </p>
               <h3 className="gold-gradient mt-3 font-serif text-3xl font-medium">
-                {lang === "en" ? "Venkata Satya Priya" : "వెంకట సత్య ప్రియ"}
+                {lang === "en" ? "Venkata Satya Priya" : "వేంకట సత్యప్రియ"}
               </h3>
               <p className="font-serif text-sm sm:text-base italic text-[#6b4021] mt-1.5 font-semibold">
                 {t.brideDegree}
@@ -66,7 +66,7 @@ export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
                     {t.parents}
                   </p>
                   <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
-                    {lang === "en" ? "D/o Sri Kallakuri Gollababu" : "శ్రీ కల్లకురి గొల్లబాబు"}
+                    {lang === "en" ? "D/o Sri Kallakuri Gollababu" : "శ్రీ కాళ్లకురి గొల్లబాబు"}
                   </p>
                   <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
                     {lang === "en"
@@ -82,7 +82,7 @@ export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
                   <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
                     {lang === "en"
                       ? "Late Sri. Kallakuri Suryanarayana Rao"
-                      : "దివంగత శ్రీ కల్లకురి సూర్యనారాయణ రావు"}
+                      : "దివంగత శ్రీ కాళ్లకురి సూర్యనారాయణ రావు"}
                   </p>
                   <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
                     {lang === "en"
