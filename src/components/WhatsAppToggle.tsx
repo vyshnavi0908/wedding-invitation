@@ -6,7 +6,7 @@ export function WhatsAppToggle({ active, lang = "en" }: { active: boolean; lang?
 
   const t = translations[lang];
   // Prefilled wedding message for WhatsApp
-  const phone = "919966554231";
+  const phone = "919441388888";
   const message = encodeURIComponent(t.whatsappMsg);
   const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
 

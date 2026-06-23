@@ -49,20 +49,21 @@ export function Footer({ lang = "en" }: { lang?: "en" | "te" }) {
         {/* Professional Designer Branding Footer */}
         <div className="mt-16 font-sans text-xs tracking-[0.2em] leading-relaxed text-[#6b4d38] sm:text-sm">
           <p>
-            © {new Date().getFullYear()} {lang === "en" ? "Priya & Ravikanth" : "ప్రియా & రవికాంత్"}{" "}
-            · {t.copyright}
+            © {new Date().getFullYear()} {lang === "en" ? "Sri Ram Studios" : "శ్రీ రామ్ స్టూడియోస్"} · {t.copyright}
           </p>
           <p className="mt-2 text-royal/70">
             {t.brandingLine}{" "}
-            <span className="font-semibold text-royal/90">DDD Dream Day Digitals</span>
+            <span className="font-semibold text-royal/90">
+              {lang === "en" ? "Sri Ram Studios" : "శ్రీ రామ్ స్టూడియోస్"}
+            </span>
           </p>
           <p className="mt-1.5 text-royal/70">
             {t.contactInfo}{" "}
             <a
-              href="tel:+919966554231"
+              href="tel:+919849658999"
               className="hover:text-royal/90 underline decoration-[#9d7931] transition-all font-semibold text-royal/90"
             >
-              +91 9966554231
+              +91 9849658999
             </a>
           </p>
         </div>
