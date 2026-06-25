@@ -110,7 +110,7 @@ export const translations = {
         dayLabel: "Day 4 (Sumuhurtham)",
         title: "The Wedding (Sumuhurtham)",
         desc: "The sacred wedding muhurtham as two lives become one.",
-        date: "Friday, July 3, 2026 (Early Hours)",
+        date: "July 2nd (Early Hours)",
         time: "01:51 AM (Early hours of Friday)",
         venue: "Reddy Rambabu Residencies, Mandapeta",
       },
@@ -122,7 +122,7 @@ export const translations = {
 
     // Countdown
     untilWeSayForever: "Until We Say Forever",
-    countdownSubtitle: "3 July 2026 (Early Hours) · Reddy Rambabu Residencies, Mandapeta",
+    countdownSubtitle: "July 2nd (Early Hours) · Reddy Rambabu Residencies, Mandapeta",
     daysLabel: "Days",
     hoursLabel: "Hours",
     minutesLabel: "Minutes",
@@ -264,7 +264,7 @@ export const translations = {
 
     // Countdown
     untilWeSayForever: "వివాహ మహోత్సవ శుభ ముహూర్తం",
-    countdownSubtitle: "తేదీ: 3 జూలై 2026 (గురువారం తెల్లవారితే శుక్రవారం) · వేదిక: రెడ్డి రాంబాబు రెసిడెన్సీస్, మండపేట",
+    countdownSubtitle: "తేదీ: 2 జూలై 2026 (గురువారం తెల్లవారితే శుక్రవారం) · వేదిక: రెడ్డి రాంబాబు రెసిడెన్సీస్, మండపేట",
     daysLabel: "రోజులు",
     hoursLabel: "గంటలు",
     minutesLabel: "నిమిషాలు",

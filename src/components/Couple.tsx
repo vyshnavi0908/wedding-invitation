@@ -77,6 +77,15 @@ export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
 
                 <div>
                   <p className="font-sans text-xs uppercase tracking-[0.2em] text-[#9d7931] font-bold">
+                    {lang === "en" ? "Brother" : "సోదరుడు"}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
+                    {lang === "en" ? "Chi. Venkata Surya Teja" : "చి|| వేంకట సూర్యతేజ"}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="font-sans text-xs uppercase tracking-[0.2em] text-[#9d7931] font-bold">
                     {t.divineBlessings}
                   </p>
                   <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
@@ -118,6 +127,22 @@ export function Couple({ lang = "en" }: { lang?: "en" | "te" }) {
               <div className="gold-divider my-5 w-20" />
 
               <div className="space-y-4">
+                <div>
+                  <p className="font-sans text-xs uppercase tracking-[0.2em] text-[#9d7931] font-bold">
+                    {t.parents}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] mt-1 font-medium leading-relaxed">
+                    {lang === "en"
+                      ? "S/o Sri Kanagarlla Vijaya Ramakrishna"
+                      : "శ్రీ కనగర్ల విజయ రామకృష్ణ"}
+                  </p>
+                  <p className="font-serif text-base italic text-[#5f4b34] font-medium leading-relaxed">
+                    {lang === "en"
+                      ? "& Smt. Nagamani"
+                      : "& శ్రీమతి నాగమణిల సుపుత్రుడు"}
+                  </p>
+                </div>
+
                 <div>
                   <p className="font-sans text-xs uppercase tracking-[0.2em] text-[#9d7931] font-bold">
                     {t.familyBlessings}

@@ -483,9 +483,6 @@ export function Schedule({ lang = "en" }: { lang?: "en" | "te" }) {
                 <span className="drop-shadow-[0_4px_12px_rgba(255,200,100,0.25)] transition-transform duration-500 group-hover:scale-110">
                   {e.icon}
                 </span>
-                <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.25em] text-royal font-bold select-none">
-                  {e.dayLabel}
-                </span>
               </div>
 
               <h3 className="gold-gradient font-serif text-3xl sm:text-[2.35rem] font-medium tracking-wide leading-normal">
