@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Particles } from "./Particles";
 import { translations } from "@/lib/translations";
+import suryaChandraLogo from "@/assets/surya-chandra-logo.png";
 
 export function Footer({ lang = "en" }: { lang?: "en" | "te" }) {
   const t = translations[lang];
@@ -71,17 +72,13 @@ export function Footer({ lang = "en" }: { lang?: "en" | "te" }) {
             {t.gheeFamilyBlessingsText}
           </p>
 
-          {/* Logo Placeholder - styled cleanly to mimic the card's red badge */}
-          <div className="mx-auto mt-6 flex flex-col h-24 w-44 items-center justify-center rounded-xl border border-dashed border-[#9d7931]/40 bg-[#fdf9ef] p-4 text-center transition-all duration-500 hover:gold-glow hover:scale-102">
-            <div className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#9d7931]/60 font-bold mb-1">
-              Logo Placeholder
-            </div>
-            <div className="font-serif text-[11px] font-bold text-[#be2e3a] uppercase tracking-wide leading-none">
-              Surya Chandra
-            </div>
-            <div className="font-sans text-[8px] uppercase tracking-[0.15em] text-[#5f4b34]/80 mt-1 font-semibold">
-              Premium Ghee
-            </div>
+          {/* Surya Chandra Ghee Logo */}
+          <div className="mx-auto mt-5 flex justify-center">
+            <img
+              src={suryaChandraLogo}
+              alt="Surya Chandra Premium Ghee"
+              className="h-24 sm:h-28 object-contain transition-all duration-500 hover:scale-105 filter drop-shadow-[0_6px_15px_rgba(157,121,49,0.12)]"
+            />
           </div>
         </div>
 
