@@ -35,9 +35,55 @@ export function Footer({ lang = "en" }: { lang?: "en" | "te" }) {
           {t.seekingBlessingsText}
         </p>
 
-        <p className="mt-8 font-script text-3xl text-[#623821] sm:text-4xl">
-          {t.withLoveSignature}
-        </p>
+        {/* Invited By Section */}
+        <div className="mt-12 space-y-3">
+          <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.4em] text-[#9d7931] font-bold">
+            {t.invitationEndingTitle}
+          </p>
+          <div className="space-y-1">
+            <p className="font-serif text-xl sm:text-2xl font-medium text-[#623821] leading-relaxed">
+              {t.familyMembersText1}
+            </p>
+            <p className="font-serif text-xl sm:text-2xl font-medium text-[#623821] leading-relaxed">
+              {t.familyMembersText2}
+            </p>
+          </div>
+          <p className="font-serif text-base italic text-[#5f4b34] pt-1">
+            {t.nearAndDear}
+          </p>
+        </div>
+
+        {/* Separator from the Card (dashed divider or elegant ornament) */}
+        <div className="my-10 flex items-center justify-center gap-3 text-[#9d7931]/60">
+          <span className="font-serif text-sm">✦</span>
+          <span className="w-16 h-px bg-gradient-to-r from-transparent via-[#9d7931]/40 to-transparent" />
+          <span className="font-serif text-sm">✦</span>
+          <span className="w-16 h-px bg-gradient-to-r from-transparent via-[#9d7931]/40 to-transparent" />
+          <span className="font-serif text-sm">✦</span>
+        </div>
+
+        {/* Blessings from Surya Chandra Ghee Family */}
+        <div className="space-y-3">
+          <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.3em] text-[#9d7931] font-bold">
+            {t.gheeFamilyBlessingsTitle}
+          </p>
+          <p className="font-serif text-lg sm:text-xl italic text-[#5f4b34] leading-relaxed">
+            {t.gheeFamilyBlessingsText}
+          </p>
+
+          {/* Logo Placeholder - styled cleanly to mimic the card's red badge */}
+          <div className="mx-auto mt-6 flex flex-col h-24 w-44 items-center justify-center rounded-xl border border-dashed border-[#9d7931]/40 bg-[#fdf9ef] p-4 text-center transition-all duration-500 hover:gold-glow hover:scale-102">
+            <div className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#9d7931]/60 font-bold mb-1">
+              Logo Placeholder
+            </div>
+            <div className="font-serif text-[11px] font-bold text-[#be2e3a] uppercase tracking-wide leading-none">
+              Surya Chandra
+            </div>
+            <div className="font-sans text-[8px] uppercase tracking-[0.15em] text-[#5f4b34]/80 mt-1 font-semibold">
+              Premium Ghee
+            </div>
+          </div>
+        </div>
 
         <div className="gold-divider mx-auto mt-10 w-24" />
         <p className="mt-6 font-sans text-xs sm:text-sm uppercase tracking-[0.4em] text-[#9d7931] font-bold">
