@@ -67,7 +67,7 @@ export function Countdown({ lang = "en" }: { lang?: "en" | "te" }) {
                 </motion.span>
               </AnimatePresence>
             </div>
-            <span className="mt-3 font-sans text-sm uppercase tracking-[0.22em] text-[#9d7931] sm:mt-4 sm:text-base sm:tracking-[0.28em] font-bold">
+            <span className="mt-3 font-sans text-xs sm:text-base uppercase tracking-[0.1em] sm:tracking-[0.28em] text-[#9d7931] font-bold">
               {label}
             </span>
           </motion.div>
